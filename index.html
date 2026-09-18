@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vinodh Kumar — UX / UI × Motion × AI Designer</title>
+    <meta name="description" content="Cinematic interactive portfolio of Vinodh Kumar: Principal UX/UI Designer, Motion Specialist & Creative AI Technologist walking through an evolving digital landscape." />
+    
+    <!-- Preconnect Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <!-- Open Graph Metadata -->
+    <meta property="og:title" content="Vinodh Kumar — Cinematic AI Portfolio" />
+    <meta property="og:description" content="A designer walking through an evolving digital design environment." />
+    <meta property="og:type" content="website" />
+    
+    <link rel="stylesheet" href="./src/styles/tokens.css" />
+    <link rel="stylesheet" href="./src/styles/main.css" />
+  </head>
+  <body class="loading-state">
+    <!-- Cinematic Experience Loader -->
+    <div id="experience-loader" class="experience-loader">
+      <div class="loader-content">
+        <div class="loader-brand">
+          <span class="brand-monogram">VK</span>
+          <span class="brand-sub">DESIGN INTELLIGENCE</span>
+        </div>
+        <div class="loader-status-bar">
+          <div class="status-meta">
+            <span id="loader-status-text" class="status-text">INITIALIZING SPATIAL ENVIRONMENT...</span>
+            <span id="loader-percent" class="status-percent">00%</span>
+          </div>
+          <div class="progress-track">
+            <div id="loader-progress-fill" class="progress-fill"></div>
+          </div>
+          <div class="frame-stream-meta">
+            <span id="loader-frame-count">PRELOADING STREAM: 0 / 599 FRAMES</span>
+            <span>1920 × 1080 60FPS TARGET</span>
+          </div>
+        </div>
+        <div class="loader-hint">
+          <span>SCROLL TO TRAVERSE DESIGN EVOLUTION</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="app">
+      <!-- Fixed Global Header / Navigation -->
+      <header class="site-header" id="site-header">
+        <div class="header-left">
+          <a href="#hero" class="logo-link" aria-label="Vinodh Kumar Home">
+            <span class="logo-mark">VK</span>
+            <div class="logo-info">
+              <span class="logo-name">Vinodh Kumar</span>
+              <span class="logo-title">Design × Motion × AI</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="header-center">
+          <nav class="stage-nav-pill" id="stage-nav" aria-label="Creative Stages">
+            <button class="stage-step active" data-stage="1" aria-label="Jump to Stage 1: Graphic Design">
+              <span class="step-num">01</span>
+              <span class="step-label">Graphic</span>
+            </button>
+            <span class="step-divider">/</span>
+            <button class="stage-step" data-stage="2" aria-label="Jump to Stage 2: UX Design">
+              <span class="step-num">02</span>
+              <span class="step-label">UX</span>
+            </button>
+            <span class="step-divider">/</span>
+            <button class="stage-step" data-stage="3" aria-label="Jump to Stage 3: UI & Code">
+              <span class="step-num">03</span>
+              <span class="step-label">UI / Code</span>
+            </button>
+            <span class="step-divider">/</span>
+            <button class="stage-step" data-stage="4" aria-label="Jump to Stage 4: Motion Graphics">
+              <span class="step-num">04</span>
+              <span class="step-label">Motion</span>
+            </button>
+            <span class="step-divider">/</span>
+            <button class="stage-step" data-stage="5" aria-label="Jump to Stage 5: AI Convergence">
+              <span class="step-num">05</span>
+              <span class="step-label">AI</span>
+            </button>
+          </nav>
+        </div>
+
+        <div class="header-right">
+          <nav class="header-quick-links" aria-label="Quick Page Links">
+            <a href="#profile" class="header-nav-link">Profile</a>
+            <a href="#experience" class="header-nav-link">Experience</a>
+            <a href="#portfolio" class="header-nav-link">Work</a>
+            <a href="articles.html" class="header-nav-link">Articles</a>
+          </nav>
+          <button id="ai-assistant-toggle" class="ai-header-btn" aria-label="Open AI Assistant">
+            <span class="ai-spark-icon">✦</span>
+            <span class="btn-text">AI Companion</span>
+            <span class="kbd-shortcut">⌘K</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- TALL SCROLL TRACK FOR CINEMATIC HERO (650vh) -->
+      <section class="cinematic-track" id="cinematic-track">
+        <div class="cinematic-sticky-viewport" id="sticky-viewport">
+          <!-- WebGL Canvas Layer (Three.js 3D Floor, Architecture, Lighting, Depth) -->
+          <canvas id="webgl-canvas" class="webgl-canvas"></canvas>
+
+          <!-- 2D Canvas Compositor Layer (High-Performance Scrubbing of 599 Human Frames) -->
+          <canvas id="human-canvas" class="human-canvas"></canvas>
+
+          <!-- Spatial HUD & Design System Layer -->
+          <div id="spatial-hud" class="spatial-hud">
+            <!-- Dynamic Vector Alignment Overlays & Coordinates -->
+            <svg id="hud-svg" class="hud-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+            
+            <div class="hud-telemetry top-left">
+              <div class="hud-item"><span class="hud-tag">LAT</span> <span id="telemetry-lat">37.7749° N</span></div>
+              <div class="hud-item"><span class="hud-tag">FRAME</span> <span id="telemetry-frame">1000 / 1598</span></div>
+              <div class="hud-item"><span class="hud-tag">VECTOR</span> <span id="telemetry-vec">[0.00, 1.00, 0.00]</span></div>
+            </div>
+
+            <div class="hud-telemetry top-right">
+              <div class="hud-item"><span class="hud-tag">MODE</span> <span id="telemetry-mode">SPATIAL SCRUB</span></div>
+              <div class="hud-item"><span class="hud-tag">FPS</span> <span id="telemetry-fps">60.0</span></div>
+              <div class="hud-item"><span class="hud-tag">INTERPOLATION</span> <span>CUBIC LERP</span></div>
+            </div>
+
+            <!-- Spatial Stage Containers (Dynamically Activated by Scroll Progress) -->
+            <div id="stage-overlay" class="stage-overlay">
+              <!-- Stage 01: Graphic Design -->
+              <div class="stage-panel" id="stage-1-panel">
+                <div class="stage-badge">STAGE 01 — FOUNDATION</div>
+                <h1 class="stage-title">GRAPHIC DESIGN</h1>
+                <p class="stage-sub">Form · Structure · Baseline Grids · Typographic Balance</p>
+                <div class="stage-visual-container" id="stage-1-visuals"></div>
+              </div>
+
+              <!-- Stage 02: UX Design -->
+              <div class="stage-panel" id="stage-2-panel">
+                <div class="stage-badge">STAGE 02 — ARCHITECTURE</div>
+                <h2 class="stage-title">UX DESIGN</h2>
+                <p class="stage-sub">Understanding People × Connecting Systems</p>
+                <div class="stage-visual-container" id="stage-2-visuals"></div>
+              </div>
+
+              <!-- Stage 03: UI / HTML / CSS -->
+              <div class="stage-panel" id="stage-3-panel">
+                <div class="stage-badge">STAGE 03 — INTERFACE & CODE</div>
+                <h2 class="stage-title">UI DESIGN</h2>
+                <p class="stage-sub">HTML / CSS · Responsive Tokens · Living Component Systems</p>
+                <div class="stage-visual-container" id="stage-3-visuals"></div>
+              </div>
+
+              <!-- Stage 04: Motion Graphics -->
+              <div class="stage-panel" id="stage-4-panel">
+                <div class="stage-badge">STAGE 04 — KINETICS</div>
+                <h2 class="stage-title">MOTION GRAPHICS</h2>
+                <p class="stage-sub">Design in Time · Bézier Curves · Trajectory Physics</p>
+                <div class="stage-visual-container" id="stage-4-visuals"></div>
+              </div>
+
+              <!-- Stage 05: AI Convergence -->
+              <div class="stage-panel" id="stage-5-panel">
+                <div class="stage-badge">STAGE 05 — THE CONVERGENCE</div>
+                <h2 class="stage-title">AI INTELLIGENCE</h2>
+                <p class="stage-sub">Design × Intelligence · Human Creativity Amplified</p>
+                <div class="stage-visual-container" id="stage-5-visuals"></div>
+              </div>
+
+              <!-- Stage Final: Vinodh Kumar Hero Statement -->
+              <div class="stage-panel" id="stage-hero-panel">
+                <div class="hero-signature-wrap">
+                  <div class="hero-eyebrow">PRINCIPAL DESIGNER & CREATIVE TECHNOLOGIST</div>
+                  <h2 class="hero-name">VINODH KUMAR</h2>
+                  <div class="hero-disciplines">
+                    <span>UX / UI</span>
+                    <span class="dot">·</span>
+                    <span>MOTION</span>
+                    <span class="dot">·</span>
+                    <span>SYSTEMS</span>
+                    <span class="dot">·</span>
+                    <span>AI</span>
+                  </div>
+                  <p class="hero-manifesto">
+                    "I walk through the world. The world responds to how I design.<br />
+                    Crafting human-first digital experiences, spatial intelligence, and visual stories."
+                  </p>
+                  <div class="hero-actions">
+                    <a href="#portfolio" class="hero-btn-primary">Explore Portfolio</a>
+                    <button id="hero-ask-ai-btn" class="hero-btn-secondary">Ask AI About My Work</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom Floating Scrub Bar Controller -->
+            <div class="hud-scrub-bar" id="hud-scrub-bar">
+              <div class="scrub-indicator">
+                <span class="scrub-label">JOURNEY TIMELINE</span>
+                <span id="scrub-timecode" class="scrub-timecode">00:00:00 / 00:24:23</span>
+              </div>
+              <div class="scrub-track-wrapper">
+                <input type="range" id="cinematic-slider" min="0" max="1000" value="0" step="1" aria-label="Cinematic scrub control" />
+                <div class="scrub-stage-markers">
+                  <span style="left: 10%;">01 GRAPHIC</span>
+                  <span style="left: 30%;">02 UX</span>
+                  <span style="left: 50%;">03 UI</span>
+                  <span style="left: 70%;">04 MOTION</span>
+                  <span style="left: 90%;">05 AI</span>
+                </div>
+              </div>
+              <div class="scrub-stats">
+                <span id="scrub-active-stage">STAGE 01: GRAPHIC DESIGN</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1. PROFESSIONAL PROFILE & CAREER SNAPSHOT -->
+      <section class="profile-section" id="profile">
+        <div class="portfolio-container">
+          <div class="profile-hero-grid">
+            <div class="profile-editorial-column">
+              <div class="section-badge">SYSTEM PROFILE // LEADERSHIP & VISION</div>
+              <h2 class="profile-main-title">Vinodh Kumar</h2>
+              <div class="profile-role-headline">
+                <span class="role-text">Team Lead — UX/UI & Motion Design</span>
+                <span class="role-divider">·</span>
+                <span class="company-text">iSpatial Techno Solutions</span>
+              </div>
+              <p class="profile-manifesto-lead">
+                A multidisciplinary design leader with <strong>18+ years</strong> of verified craft experience engineering high-impact digital products, spatial GIS intelligence platforms, telematics command hubs, and applied generative AI systems.
+              </p>
+              <p class="profile-manifesto-sub">
+                Operating across the entire creative continuum: from typographic baseline grids and mathematical composition to living design token architectures, physics-damped motion grammars, and generative design-to-code pipelines. Leading with cognitive empathy, technical rigor, and relentless visual excellence.
+              </p>
+
+              <div class="profile-action-links">
+                <a href="#experience" class="profile-btn-primary">Explore Experience Timeline ▹</a>
+                <a href="#portfolio" class="profile-btn-secondary">View Repertoire</a>
+                <a href="https://www.behance.net/AkkySigns" target="_blank" rel="noopener noreferrer" class="profile-btn-outline">
+                  <svg class="btn-brand-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M7.799 6c1.171 0 2.115.244 2.832.732.717.488 1.076 1.206 1.076 2.154 0 .61-.165 1.127-.494 1.551-.33.424-.775.738-1.336.942.744.183 1.306.549 1.684 1.098.379.549.568 1.244.568 2.086 0 1.073-.39 1.909-1.171 2.508-.781.598-1.842.897-3.183.897H1V6h6.799zm-4.04 4.502h3.69c.561 0 .994-.122 1.299-.366.305-.244.458-.616.458-1.116 0-.537-.159-.922-.476-1.153-.317-.232-.775-.348-1.373-.348H3.759v2.983zm0 5.48h3.916c.646 0 1.147-.14 1.501-.421.354-.281.531-.726.531-1.336 0-.585-.183-1.018-.549-1.299-.366-.281-.909-.421-1.629-.421H3.759v3.477zM16.326 6.32h5.087v1.446h-5.087V6.32zm6.276 7.643c0 1.293-.384 2.318-1.153 3.074-.769.756-1.83 1.135-3.183 1.135-1.415 0-2.525-.403-3.33-1.208-.805-.805-1.208-1.921-1.208-3.348 0-1.403.409-2.513 1.226-3.33.817-.817 1.897-1.226 3.239-1.226 1.318 0 2.361.397 3.129 1.19.768.793 1.153 1.867 1.153 3.221v.492h-6.148c.024.781.275 1.385.751 1.812.476.427 1.11.641 1.903.641.561 0 1.018-.116 1.372-.348.354-.232.61-.531.769-.897h1.486zm-1.486-1.19c-.024-.659-.226-1.171-.604-1.537-.378-.366-.909-.549-1.592-.549-.659 0-1.183.177-1.574.531-.39.354-.61.872-.659 1.555h4.429z"/></svg>
+                  <span>Behance</span>
+                  <span class="arrow-glyph">↗</span>
+                </a>
+                <a href="https://www.linkedin.com/in/vinnythewebdesigner/" target="_blank" rel="noopener noreferrer" class="profile-btn-outline">
+                  <svg class="btn-brand-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 0 0 0-3.28 1.64 1.64 0 0 0 0 3.28m1.39 9.74v-8.37H5.07v8.37h2.78z"/></svg>
+                  <span>LinkedIn</span>
+                  <span class="arrow-glyph">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Numbers / Career Snapshot Matrix -->
+            <div class="career-metrics-hud">
+              <div class="metrics-hud-card">
+                <div class="hud-card-corner tl"></div>
+                <div class="hud-card-corner tr"></div>
+                <div class="hud-card-corner bl"></div>
+                <div class="hud-card-corner br"></div>
+                
+                <div class="metrics-hud-header">
+                  <span class="hud-metric-tag">DATA TELEMETRY // CAREER SNAPSHOT</span>
+                  <span class="hud-pulse-indicator"><span class="pulse-dot"></span> VERIFIED</span>
+                </div>
+
+                <div class="metrics-quad-grid">
+                  <div class="metric-quad-item">
+                    <div class="metric-large-num">18+</div>
+                    <div class="metric-title-label">Years in Design</div>
+                    <div class="metric-sub-note">Foundation to Enterprise AI</div>
+                  </div>
+
+                  <div class="metric-quad-item">
+                    <div class="metric-large-num">8</div>
+                    <div class="metric-title-label">Design Team Members</div>
+                    <div class="metric-sub-note">Led & Mentored at IST</div>
+                  </div>
+
+                  <div class="metric-quad-item">
+                    <div class="metric-large-num">UX × UI</div>
+                    <div class="metric-title-label">Motion · Systems · AI</div>
+                    <div class="metric-sub-note">Core Convergent Disciplines</div>
+                  </div>
+
+                  <div class="metric-quad-item">
+                    <div class="metric-large-num">22K+</div>
+                    <div class="metric-title-label">LinkedIn Community</div>
+                    <div class="metric-sub-note">Industry Peers & Followers</div>
+                  </div>
+                </div>
+
+                <div class="metrics-hud-footer">
+                  <span class="foot-label">DISCIPLINE FOOTPRINT</span>
+                  <span class="foot-val">GRAPHIC · UX · UI · MOTION · AI · SPATIAL</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. INTERACTIVE EXPERIENCE TIMELINE -->
+      <section class="experience-section" id="experience">
+        <div class="portfolio-container">
+          <header class="section-center-header">
+            <div class="section-badge">CAREER TRAJECTORY // 18+ YEARS</div>
+            <h2 class="section-title">Interactive Experience Timeline</h2>
+            <p class="section-subtitle">
+              A progressive journey from typographic foundations to directing multidisciplinary teams on mission-critical geospatial, enterprise, and generative AI platforms.
+            </p>
+          </header>
+
+          <div id="experience-timeline-container" class="experience-timeline-wrapper">
+            <!-- Dynamically populated via ExperienceTimeline.ts -->
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. DESIGN DISCIPLINES (WHAT I DESIGN) -->
+      <section class="disciplines-section" id="disciplines">
+        <div class="portfolio-container">
+          <header class="section-center-header">
+            <div class="section-badge">WHAT I DESIGN // 5 MAJOR DISCIPLINES</div>
+            <h2 class="section-title">Core Design Disciplines</h2>
+            <p class="section-subtitle">
+              Instead of a conventional skill cloud, a structured ecosystem of five symbiotic design pillars backed by interactive micro-visualizers.
+            </p>
+          </header>
+
+          <div id="disciplines-grid" class="disciplines-grid">
+            <!-- Dynamically populated via ProfileController.ts -->
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. SKILLS MATRIX -->
+      <section class="skills-section" id="skills">
+        <div class="portfolio-container">
+          <header class="section-center-header">
+            <div class="section-badge">COMPETENCY ARCHITECTURE // VERIFIED</div>
+            <h2 class="section-title">Specialized Skill Matrix</h2>
+            <p class="section-subtitle">
+              Deep, factual capabilities grouped into six structural domains—from ergonomics and front-end code to spatial GIS and design leadership.
+            </p>
+          </header>
+
+          <!-- 3D ORBITAL COMPETENCY GALAXY -->
+          <div class="orbital-galaxy-wrapper">
+            <div class="galaxy-hud-header">
+              <div class="galaxy-legend-tags">
+                <span class="galaxy-tag"><span class="galaxy-dot"></span> 3D ORBITAL SKILL CONSTELLATION</span>
+                <span class="galaxy-note">HOVER OVER ANY NODE OR DRAG TO ROTATE CLUSTERS</span>
+              </div>
+              <div id="galaxy-skill-hud" class="galaxy-node-hud">
+                <span class="node-hud-prefix">INSPECTING:</span>
+                <strong id="galaxy-node-name">UI Architecture & Systems</strong>
+                <span class="node-hud-divider">·</span>
+                <span id="galaxy-node-cat">UI & UX DESIGN</span>
+                <span class="node-hud-badge" id="galaxy-node-metric">STATUS: ACTIVE IN PRODUCTION</span>
+              </div>
+            </div>
+            <div class="galaxy-canvas-container">
+              <canvas id="orbital-galaxy-canvas" class="orbital-galaxy-canvas"></canvas>
+            </div>
+          </div>
+
+          <div id="skill-matrix-filters" class="skill-filters-tabs">
+            <!-- Populated via ProfileController.ts -->
+          </div>
+
+          <div id="skill-matrix-grid" class="skill-matrix-grid">
+            <!-- Populated via ProfileController.ts -->
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. TOOLS & TECHNOLOGIES ECOSYSTEM -->
+      <section class="tools-section" id="tools">
+        <div class="portfolio-container">
+          <header class="section-center-header">
+            <div class="section-badge">TOOLCHAIN ECOSYSTEM // ACTIVE WORKSPACE</div>
+            <h2 class="section-title">Tools I Work With</h2>
+            <p class="section-subtitle">
+              An elegant visual ecosystem rather than a standard logo wall—curated across design suites, frontier AI models, creative technology, and modern web engines.
+            </p>
+          </header>
+
+          <div id="tools-ecosystem-grid" class="tools-ecosystem-grid">
+            <!-- Populated via ProfileController.ts -->
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. CERTIFICATIONS / DIGITAL CREDENTIAL VAULT -->
+      <section class="certifications-section" id="certifications">
+        <div class="portfolio-container">
+          <header class="section-center-header">
+            <div class="section-badge">AUTHENTICATED CREDENTIAL // VERIFIED REGISTRY</div>
+            <h2 class="section-title">Digital Credential Vault</h2>
+            <p class="section-subtitle">
+              Verified professional credentials with active cryptographic ID records and HUD scanning telemetry.
+            </p>
+          </header>
+
+          <div class="vault-container-wrap">
+            <div id="credential-vault-card" class="credential-vault-card">
+              <!-- Populated via ProfileController.ts with Anthropic Claude 101 -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. DESIGNING WITH AI / CREATIVE TECHNOLOGY -->
+      <section class="ai-design-section" id="ai-design">
+        <div class="portfolio-container">
+          <header class="section-center-header">
+            <div class="section-badge">FRONTIER WORKFLOW // CREATIVE TECHNOLOGY</div>
+            <h2 class="section-title">Designing With AI</h2>
+            <p class="section-subtitle">
+              AI is not separate from design practice; it is an amplification of human intent. Engineering human-centered generative workflows, spatial computer vision, and zero-latency local GPU tools.
+            </p>
+          </header>
+
+          <!-- Process Flow Stream -->
+          <div class="ai-process-stream">
+            <div class="process-node">
+              <span class="process-step-num">01</span>
+              <h4 class="process-step-title">HUMAN INTENT</h4>
+              <p class="process-step-desc">Strategic empathy & rigorous constraints</p>
+            </div>
+            <div class="process-arrow">▹</div>
+
+            <div class="process-node">
+              <span class="process-step-num">02</span>
+              <h4 class="process-step-title">DESIGN THINKING</h4>
+              <p class="process-step-desc">Spatial mental models & cognitive ergonomics</p>
+            </div>
+            <div class="process-arrow">▹</div>
+
+            <div class="process-node">
+              <span class="process-step-num">03</span>
+              <h4 class="process-step-title">AI ACCELERATION</h4>
+              <p class="process-step-desc">Rapid exploration via frontier LLMs & models</p>
+            </div>
+            <div class="process-arrow">▹</div>
+
+            <div class="process-node">
+              <span class="process-step-num">04</span>
+              <h4 class="process-step-title">EXPERIMENTATION</h4>
+              <p class="process-step-desc">Local GPU compute, face restoration & shaders</p>
+            </div>
+            <div class="process-arrow">▹</div>
+
+            <div class="process-node highlight">
+              <span class="process-step-num">05</span>
+              <h4 class="process-step-title">CREATIVE OUTPUT</h4>
+              <p class="process-step-desc">60fps fluidity & WCAG AAA accessible systems</p>
+            </div>
+          </div>
+
+          <!-- Featured AI Experiment Card: Local GPU Video/Image Face Restoration -->
+          <div class="featured-ai-experiment">
+            <div class="ai-experiment-header">
+              <div>
+                <span class="experiment-badge">FEATURED CREATIVE TECH EXPERIMENT</span>
+                <h3 class="experiment-title">Local GPU Image & Video AI Enhancement Suite</h3>
+                <p class="experiment-tagline">High-Fidelity Face Restoration & Video Upscaling via Local Model Compute</p>
+              </div>
+              <div class="experiment-tech-tags">
+                <span class="tech-pill">PyTorch / CUDA</span>
+                <span class="tech-pill">CodeFormer</span>
+                <span class="tech-pill">GFPGAN</span>
+                <span class="tech-pill">Zero Cloud Latency</span>
+              </div>
+            </div>
+
+            <div class="experiment-body-grid">
+              <div class="experiment-body-desc">
+                <p>
+                  Engineered a privacy-preserving desktop application that runs deep learning restoration models directly on local GPU hardware. Eliminates cloud upload latency, bandwidth costs, and subscription boundaries while delivering state-of-the-art facial reconstruction and high-framerate video fidelity.
+                </p>
+                <div class="experiment-highlights-list">
+                  <div class="highlight-bullet">
+                    <span class="highlight-check">✓</span>
+                    <span>Bespoke desktop UX designed for rapid batch processing with dual before/after loupe inspection.</span>
+                  </div>
+                  <div class="highlight-bullet">
+                    <span class="highlight-check">✓</span>
+                    <span>Zero cloud dependencies — 100% private processing running directly on Nvidia CUDA cores.</span>
+                  </div>
+                  <div class="highlight-bullet">
+                    <span class="highlight-check">✓</span>
+                    <span>Integrated facial feature preservation and noise-reduction weighting curves.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="experiment-visual-frame">
+                <div class="frame-hud-border">
+                  <div class="ai-comparison-wrapper">
+                    <div class="ai-comparison-topbar">
+                      <div class="scan-telemetry">
+                        <span class="live-pulse"></span>
+                        <span class="scan-tag">CUDA INFERENCE // 60 FPS</span>
+                        <span class="fps-tag" id="ai-split-percent">50% CURTAIN</span>
+                      </div>
+                      <div class="ai-slider-presets">
+                        <button type="button" class="preset-pill" id="btn-show-raw">Raw Input</button>
+                        <button type="button" class="preset-pill active" id="btn-show-split">50/50 Split</button>
+                        <button type="button" class="preset-pill" id="btn-show-restored">Restored</button>
+                      </div>
+                    </div>
+
+                    <!-- Draggable Split Screen Comparison Canvas -->
+                    <div class="ai-comparison-container" id="ai-comparison-container">
+                      <!-- Base Layer: Raw Degraded Input -->
+                      <div class="ai-slide-layer ai-layer-raw">
+                        <img src="./assets/ai_face_restoration.jpg" alt="Degraded low resolution archival face" class="ai-comparison-img raw-filter" draggable="false" />
+                        <span class="layer-badge left">RAW ARCHIVAL (DEGRADED)</span>
+                      </div>
+
+                      <!-- Overlaid Layer: Neural Restored 4K Face with dynamic clip path -->
+                      <div class="ai-slide-layer ai-layer-restored" id="ai-slider-restored">
+                        <img src="./assets/ai_face_restoration.jpg" alt="Neural reconstructed 8K face" class="ai-comparison-img restored-filter" draggable="false" />
+                        <span class="layer-badge right">NEURAL RESTORED (4K)</span>
+                      </div>
+
+                      <!-- Draggable Divider Line & Handle -->
+                      <div class="ai-slider-divider" id="ai-slider-divider">
+                        <div class="divider-glow-line"></div>
+                        <div class="divider-grab-handle">
+                          <span class="handle-icon">⇹</span>
+                        </div>
+                      </div>
+
+                      <!-- 3X Magnifier Loupe -->
+                      <div class="ai-slider-loupe" id="ai-slider-loupe">
+                        <div class="loupe-reticle">
+                          <span class="reticle-plus">+</span>
+                          <span class="loupe-tag">3X LOUPE</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="ai-comparison-footer">
+                      <span class="footer-hint">DRAG DIVIDER OR HOVER TO INSPECT CODEFORMER + GFPGAN FACIAL RECONSTRUCTION</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. ARTICLES & THOUGHT PROCESS (THINKING THROUGH DESIGN) -->
+      <section class="thinking-section" id="thinking">
+        <div class="portfolio-container">
+          <header class="section-center-header">
+            <div class="section-badge">PUBLICATIONS & ESSAYS // LINKEDIN ARTICLES</div>
+            <h2 class="section-title">Thinking Through Design</h2>
+            <p class="section-subtitle">
+              Selected authored articles and essays exploring visual semiotics, user psychology, benchmarking heuristics, and human-in-the-loop AI workflows.
+            </p>
+            <div class="thinking-header-action">
+              <a href="https://www.linkedin.com/in/vinnythewebdesigner/recent-activity/articles/" target="_blank" rel="noopener noreferrer" class="articles-linkedin-hub-btn">
+                <svg class="btn-brand-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 0 0 0-3.28 1.64 1.64 0 0 0 0 3.28m1.39 9.74v-8.37H5.07v8.37h2.78z"/></svg>
+                <span>View Full Articles Archive on LinkedIn</span>
+                <span class="arrow-glyph">↗</span>
+              </a>
+            </div>
+          </header>
+
+          <div class="articles-filter-bar" id="articles-filter-bar">
+            <!-- Filter chips populated via ProfileController -->
+          </div>
+
+          <div id="articles-grid" class="articles-grid">
+            <!-- Dynamically populated via ProfileController.ts -->
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. DESIGN LEADERSHIP SECTION -->
+      <section class="leadership-section" id="leadership">
+        <div class="portfolio-container">
+          <header class="section-center-header">
+            <div class="section-badge">ORGANIZATIONAL IMPACT // CRAFT & SCALE</div>
+            <h2 class="section-title">Design Leadership & Strategy</h2>
+            <p class="section-subtitle">
+              Evolving from individual high-craft execution toward orchestrating living systems, empowering talent, and driving enterprise product roadmaps.
+            </p>
+          </header>
+
+          <!-- Career Evolution Progression Chevron -->
+          <div class="leadership-evolution-wrapper">
+            <div class="evolution-label">CAREER PROGRESSION SPECTRUM</div>
+            <div id="leadership-evolution-track" class="leadership-evolution-track">
+              <!-- Populated via ProfileController.ts -->
+            </div>
+          </div>
+
+          <!-- 4 Leadership Pillars -->
+          <div id="leadership-pillars-grid" class="leadership-pillars-grid">
+            <!-- Populated via ProfileController.ts -->
+          </div>
+
+          <!-- Quote Box -->
+          <div class="leadership-quote-card">
+            <div class="quote-symbol">“</div>
+            <p class="leadership-quote-text">
+              Leadership in design is not about dictating visual taste; it is about creating an environment where high craft, technical rigor, and deep human empathy flourish effortlessly.
+            </p>
+            <span class="quote-author">— Vinodh Kumar, Team Lead @ iSpatial Techno Solutions</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. SELECTED PORTFOLIO REPERTOIRE (ENGINEERED PROJECTS) -->
+      <section class="portfolio-section" id="portfolio">
+        <div class="portfolio-container">
+          <header class="portfolio-header">
+            <div class="section-badge">SELECTED REPERTOIRE // CASE STUDIES</div>
+            <h2 class="portfolio-title">Engineered Digital Experiences</h2>
+            <p class="portfolio-subtitle">
+              High-impact spatial systems, GIS intelligence platforms, telematics, and generative AI experiments designed with meticulous attention to human ergonomics and cinematic aesthetics.
+            </p>
+          </header>
+
+          <!-- Filter / Category Tabs -->
+          <div class="project-filters" id="project-filters" role="tablist">
+            <button class="filter-btn active" data-filter="all">All Works (17)</button>
+            <button class="filter-btn" data-filter="gis">GIS & Spatial (3)</button>
+            <button class="filter-btn" data-filter="web">Web & Portals (4)</button>
+            <button class="filter-btn" data-filter="marketing">Branding & Print (3)</button>
+            <button class="filter-btn" data-filter="art">Digital Art (3)</button>
+            <button class="filter-btn" data-filter="ux">UI/UX Systems (3)</button>
+            <button class="filter-btn" data-filter="motion">Motion Design (1)</button>
+          </div>
+
+          <!-- Projects Showcase Grid -->
+          <div class="projects-grid" id="projects-grid">
+            <!-- Dynamically populated via PortfolioSection.ts -->
+          </div>
+        </div>
+      </section>
+
+      <!-- 10B. PUBLISHED ARTICLES & THOUGHT LEADERSHIP (LINKEDIN ESSAYS) -->
+      <section class="home-articles-section" id="articles">
+        <div class="portfolio-container">
+          <header class="portfolio-header">
+            <div class="section-badge">PUBLISHED ESSAYS // THOUGHT LEADERSHIP</div>
+            <h2 class="portfolio-title">Design Intelligence & Strategic Discourse</h2>
+            <p class="portfolio-subtitle">
+              In-depth research and architectural essays published to 22,000+ designers and engineers on LinkedIn. Exploring cognitive ergonomics, generative AI reality, technical synthesis, and client psychology.
+            </p>
+          </header>
+
+          <div class="home-articles-grid">
+            <!-- Article Card 1 -->
+            <article class="article-magazine-card">
+              <a href="article.html?id=ai-no-code-tools" class="article-card-cover-link">
+                <div class="article-cover-frame">
+                  <img src="./assets/articles/art_no_code_ai_tools.jpg" alt="Why UX-Focused Knowledge Matters More Than Ever In the Age of No-Code AI Design Tools" class="article-card-img" loading="lazy" />
+                  <div class="article-cover-gradient"></div>
+                  <span class="article-read-badge">7 min read</span>
+                </div>
+              </a>
+              <div class="article-card-body">
+                <div class="article-card-meta">
+                  <span class="article-category-pill badge-ai">AI & Creative Tech</span>
+                  <span class="card-sep">•</span>
+                  <span class="card-date">Published on LinkedIn</span>
+                  <span class="card-sep">•</span>
+                  <span class="card-num">ESSAY // 01</span>
+                </div>
+                <h3 class="article-card-title">
+                  <a href="article.html?id=ai-no-code-tools">Why UX-Focused Knowledge Matters More Than Ever In the Age of No-Code AI Design Tools</a>
+                </h3>
+                <p class="article-card-subtitle">AI Generates. Humans Direct. Why foundational ergonomics, system thinking, and cognitive laws supersede prompt templates.</p>
+                <div class="article-card-topics">
+                  <span class="card-topic-pill">No-Code AI</span>
+                  <span class="card-topic-pill">UX Foundations</span>
+                  <span class="card-topic-pill">Cognitive Ergonomics</span>
+                </div>
+                <div class="article-card-footer">
+                  <div class="card-author-info">
+                    <div class="author-micro-avatar">VK</div>
+                    <div class="author-micro-text">
+                      <span class="author-name">Vinodh Kumar</span>
+                      <span class="author-role">UX Lead · AI Specialist</span>
+                    </div>
+                  </div>
+                  <a href="article.html?id=ai-no-code-tools" class="article-read-link">
+                    <span>Read Essay</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Article Card 2 -->
+            <article class="article-magazine-card">
+              <a href="article.html?id=technical-poster-design" class="article-card-cover-link">
+                <div class="article-cover-frame">
+                  <img src="./assets/articles/art_technical_poster.jpg" alt="How to Design a Technical Poster When You're Not an Expert" class="article-card-img" loading="lazy" />
+                  <div class="article-cover-gradient"></div>
+                  <span class="article-read-badge">8 min read</span>
+                </div>
+              </a>
+              <div class="article-card-body">
+                <div class="article-card-meta">
+                  <span class="article-category-pill badge-visual">Visual & Tech</span>
+                  <span class="card-sep">•</span>
+                  <span class="card-date">Published on LinkedIn</span>
+                  <span class="card-sep">•</span>
+                  <span class="card-num">ESSAY // 02</span>
+                </div>
+                <h3 class="article-card-title">
+                  <a href="article.html?id=technical-poster-design">How to Design a Technical Poster When You're Not an Expert</a>
+                </h3>
+                <p class="article-card-subtitle">A Designer's Guide to Clarity, Collaboration & Visual Intelligence in translating complex scientific schemas.</p>
+                <div class="article-card-topics">
+                  <span class="card-topic-pill">Technical Posters</span>
+                  <span class="card-topic-pill">Visual Synthesis</span>
+                  <span class="card-topic-pill">Information Design</span>
+                </div>
+                <div class="article-card-footer">
+                  <div class="card-author-info">
+                    <div class="author-micro-avatar">VK</div>
+                    <div class="author-micro-text">
+                      <span class="author-name">Vinodh Kumar</span>
+                      <span class="author-role">UX Lead · Visual Architect</span>
+                    </div>
+                  </div>
+                  <a href="article.html?id=technical-poster-design" class="article-read-link">
+                    <span>Read Essay</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Article Card 3 -->
+            <article class="article-magazine-card">
+              <a href="article.html?id=client-psychology" class="article-card-cover-link">
+                <div class="article-cover-frame">
+                  <img src="./assets/articles/art_client_psychology.jpg" alt="Understanding Client Psychology: A Scientific Approach for UX/Graphic Designers" class="article-card-img" loading="lazy" />
+                  <div class="article-cover-gradient"></div>
+                  <span class="article-read-badge">9 min read</span>
+                </div>
+              </a>
+              <div class="article-card-body">
+                <div class="article-card-meta">
+                  <span class="article-category-pill badge-leadership">Strategy & Psych</span>
+                  <span class="card-sep">•</span>
+                  <span class="card-date">Published on LinkedIn</span>
+                  <span class="card-sep">•</span>
+                  <span class="card-num">ESSAY // 04</span>
+                </div>
+                <h3 class="article-card-title">
+                  <a href="article.html?id=client-psychology">Understanding Client Psychology: A Scientific Approach for UX/Graphic Designers</a>
+                </h3>
+                <p class="article-card-subtitle">Deconstruct cognitive biases, risk aversion, and loss-framing to transform subjective debates into data-driven consensus.</p>
+                <div class="article-card-topics">
+                  <span class="card-topic-pill">Client Psychology</span>
+                  <span class="card-topic-pill">Stakeholder Alignment</span>
+                  <span class="card-topic-pill">Loss Aversion</span>
+                </div>
+                <div class="article-card-footer">
+                  <div class="card-author-info">
+                    <div class="author-micro-avatar">VK</div>
+                    <div class="author-micro-text">
+                      <span class="author-name">Vinodh Kumar</span>
+                      <span class="author-role">UX Lead · Strategist</span>
+                    </div>
+                  </div>
+                  <a href="article.html?id=client-psychology" class="article-read-link">
+                    <span>Read Essay</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Explore All CTA Bar -->
+          <div class="home-articles-cta-row">
+            <a href="articles.html" class="cta-explore-all-articles">
+              <span>Explore All Articles & Publications Archive (6 Essays)</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/vinnythewebdesigner/recent-activity/articles/" target="_blank" rel="noopener noreferrer" class="cta-linkedin-home-badge">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 0 0 0-3.28 1.64 1.64 0 0 0 0 3.28m1.39 9.74v-8.37H5.07v8.37h2.78z"/></svg>
+              <span>Follow on LinkedIn (22K+) ↗</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11. ABOUT VINODH (EDITORIAL PROFILE) -->
+      <section class="about-section" id="about">
+        <div class="portfolio-container">
+          <div class="about-card-box">
+            <div class="about-card-header">
+              <div class="section-badge">EDITORIAL PROFILE</div>
+              <h2 class="about-title">About Vinodh Kumar</h2>
+            </div>
+            
+            <div class="about-content-grid">
+              <div class="about-text-column">
+                <p class="about-lead">
+                  A multidisciplinary designer exploring the intersection of human experience, spatial computing, kinetic motion, and artificial intelligence.
+                </p>
+                <p class="about-body">
+                  With over 18 years of continuous design practice, my work has bridged the tactile precision of graphic typography, the architectural clarity of enterprise UX, and the cutting-edge potential of real-time 3D and generative machine intelligence.
+                </p>
+                <p class="about-body">
+                  As Team Lead at iSpatial Techno Solutions, I direct an 8-member multidisciplinary design and motion team, spearheading mission-critical geospatial interfaces, telematics control rooms, and AI-enabled product experiences for global enterprises.
+                </p>
+              </div>
+
+              <div class="about-pillars-column">
+                <div class="about-feature-box">
+                  <span class="feature-tag">PHILOSOPHY</span>
+                  <h4>Human Intent Amplified</h4>
+                  <p>Technology should bend to human cognition, never the reverse. Every pixel and motion curve must earn its place.</p>
+                </div>
+                <div class="about-feature-box">
+                  <span class="feature-tag">EXPERIMENTATION</span>
+                  <h4>Continuous Exploration</h4>
+                  <p>From WebGL shader physics to local GPU deep learning pipelines, continuous technical experimentation fuels my design perspective.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 12. SITE FOOTER & CONTACT / SOCIAL ECOSYSTEM -->
+      <footer class="site-footer" id="contact">
+        <div class="portfolio-container footer-flex">
+          <div class="footer-left">
+            <span class="footer-logo">VINODH KUMAR</span>
+            <p>Principal Designer · Team Lead UX/UI & Motion · Creative Technologist</p>
+            <span class="footer-copy">© 2026 Vinodh Kumar. All rights reserved.</span>
+          </div>
+
+          <div class="footer-social-links">
+            <a href="articles.html" class="footer-link">
+              <span>Articles & Essays</span>
+            </a>
+            <a href="https://www.behance.net/AkkySigns" target="_blank" rel="noopener noreferrer" class="footer-link special">
+              <svg class="footer-brand-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M7.799 6c1.171 0 2.115.244 2.832.732.717.488 1.076 1.206 1.076 2.154 0 .61-.165 1.127-.494 1.551-.33.424-.775.738-1.336.942.744.183 1.306.549 1.684 1.098.379.549.568 1.244.568 2.086 0 1.073-.39 1.909-1.171 2.508-.781.598-1.842.897-3.183.897H1V6h6.799zm-4.04 4.502h3.69c.561 0 .994-.122 1.299-.366.305-.244.458-.616.458-1.116 0-.537-.159-.922-.476-1.153-.317-.232-.775-.348-1.373-.348H3.759v2.983zm0 5.48h3.916c.646 0 1.147-.14 1.501-.421.354-.281.531-.726.531-1.336 0-.585-.183-1.018-.549-1.299-.366-.281-.909-.421-1.629-.421H3.759v3.477zM16.326 6.32h5.087v1.446h-5.087V6.32zm6.276 7.643c0 1.293-.384 2.318-1.153 3.074-.769.756-1.83 1.135-3.183 1.135-1.415 0-2.525-.403-3.33-1.208-.805-.805-1.208-1.921-1.208-3.348 0-1.403.409-2.513 1.226-3.33.817-.817 1.897-1.226 3.239-1.226 1.318 0 2.361.397 3.129 1.19.768.793 1.153 1.867 1.153 3.221v.492h-6.148c.024.781.275 1.385.751 1.812.476.427 1.11.641 1.903.641.561 0 1.018-.116 1.372-.348.354-.232.61-.531.769-.897h1.486zm-1.486-1.19c-.024-.659-.226-1.171-.604-1.537-.378-.366-.909-.549-1.592-.549-.659 0-1.183.177-1.574.531-.39.354-.61.872-.659 1.555h4.429z"/></svg>
+              <span>Behance (AkkySigns)</span>
+              <span class="arrow-glyph">↗</span>
+            </a>
+            <a href="https://www.linkedin.com/in/vinnythewebdesigner/" target="_blank" rel="noopener noreferrer" class="footer-link special">
+              <svg class="footer-brand-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 0 0 0-3.28 1.64 1.64 0 0 0 0 3.28m1.39 9.74v-8.37H5.07v8.37h2.78z"/></svg>
+              <span>LinkedIn (22K+)</span>
+              <span class="arrow-glyph">↗</span>
+            </a>
+            <a href="mailto:mandhalavinodh@gmail.com" class="footer-link">
+              <svg class="footer-brand-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <span>mandhalavinodh@gmail.com</span>
+            </a>
+            <a href="#cinematic-track" class="footer-link back-to-top">Back to Top ↑</a>
+          </div>
+        </div>
+      </footer>
+
+      <!-- PROJECT MODAL DEEP-DIVE (SPATIAL ARCHITECTURAL DRAWER) -->
+      <div id="project-modal" class="project-modal" aria-hidden="true" role="dialog">
+        <div class="modal-backdrop" id="modal-backdrop"></div>
+        <div class="modal-card">
+          <button class="modal-close-btn" id="modal-close-btn" aria-label="Close project modal">✕</button>
+          <div class="modal-scrollable-content" id="modal-content">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </div>
+
+      <!-- IN-DEPTH ARTICLE READING MODAL -->
+      <div id="article-modal" class="article-modal" aria-hidden="true" role="dialog">
+        <div class="modal-backdrop" id="article-modal-backdrop"></div>
+        <div class="article-modal-card">
+          <button class="modal-close-btn" id="article-modal-close" aria-label="Close article preview">✕</button>
+          <div class="article-modal-content" id="article-modal-body">
+            <!-- Populated dynamically via ProfileController -->
+          </div>
+        </div>
+      </div>
+
+      <!-- NATIVE AI DESIGN INTELLIGENCE COMPANION -->
+      <div id="ai-drawer" class="ai-drawer" aria-hidden="true">
+        <div class="ai-drawer-backdrop" id="ai-drawer-backdrop"></div>
+        <div class="ai-drawer-panel">
+          <header class="ai-drawer-header">
+            <div class="ai-drawer-title-group">
+              <span class="ai-spark">✦</span>
+              <div>
+                <h3 class="ai-drawer-title">Vinodh's AI Design Assistant</h3>
+                <span class="ai-drawer-subtitle">Trained on Vinodh's real projects, UX methodology & spatial systems</span>
+              </div>
+            </div>
+            <button id="ai-drawer-close" class="ai-close-btn" aria-label="Close AI Assistant">✕</button>
+          </header>
+
+          <div class="ai-chat-messages" id="ai-messages">
+            <div class="ai-message assistant">
+              <div class="msg-avatar">VK/AI</div>
+              <div class="msg-body">
+                <p>Hello! I am Vinodh Kumar's interactive portfolio intelligence companion. Ask me anything about his geospatial projects (SmartMap, GeoVision, SmartGeoFleet), his design system philosophy, or how he integrates AI into UX workflows.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="ai-suggested-prompts" id="ai-suggestions">
+            <button class="suggestion-chip" data-query="What projects has Vinodh worked on?">Featured Projects</button>
+            <button class="suggestion-chip" data-query="Show me his GIS and spatial mapping work.">GIS & 3D Maps</button>
+            <button class="suggestion-chip" data-query="How does Vinodh approach UX & design systems?">UX Philosophy</button>
+            <button class="suggestion-chip" data-query="How does he use AI in design?">AI Integration</button>
+          </div>
+
+          <form id="ai-form" class="ai-input-form">
+            <input type="text" id="ai-input" class="ai-input" placeholder="Ask about Vinodh's design work, GIS projects, or tech stack..." autocomplete="off" />
+            <button type="submit" class="ai-send-btn" aria-label="Send message">
+              <span>Send</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>

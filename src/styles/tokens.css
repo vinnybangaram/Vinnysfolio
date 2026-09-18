@@ -1,0 +1,68 @@
+:root {
+  /* Color Palette — "Light Future" / Matte Slate & Architectural Warm Stone */
+  --bg-darkest: #07090c;
+  --bg-surface: #0b0f14;
+  --bg-card: #11161d;
+  --bg-card-hover: #171e27;
+  --bg-glass: rgba(17, 22, 29, 0.72);
+  --bg-glass-strong: rgba(12, 16, 21, 0.88);
+  
+  /* Floor and WebGL Matched Tones */
+  --floor-color: #0d1217;
+  --floor-grid: rgba(255, 255, 255, 0.05);
+  --spotlight-core: rgba(147, 197, 253, 0.18);
+  
+  /* Text & Contrast Hierarchy */
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-dim: #475569;
+  
+  /* HUD & Telemetry Accents (Sophisticated silver, soft cyan, muted ice blue) */
+  --hud-cyan: #38bdf8;
+  --hud-blue: #60a5fa;
+  --hud-silver: #e2e8f0;
+  --hud-dim: rgba(148, 163, 184, 0.35);
+  --hud-line: rgba(255, 255, 255, 0.12);
+  --hud-line-subtle: rgba(255, 255, 255, 0.06);
+  --hud-glow: rgba(56, 189, 248, 0.16);
+  
+  /* Accent Warm Glow (very restrained, e.g. for highlights) */
+  --accent-warm: #fbbf24;
+  --accent-coral: #f43f5e;
+  
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  /* Transitions & Easing */
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --space-32: 128px;
+  
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+  
+  /* Shadows & Depth */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px -4px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 20px 48px -12px rgba(0, 0, 0, 0.7);
+  --shadow-hud: 0 0 20px rgba(56, 189, 248, 0.15);
+}

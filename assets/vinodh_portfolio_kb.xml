@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vinodh_portfolio_knowledge_base schema_version="1.0">
+  <knowledge_base>
+    <schema_version>1.0</schema_version>
+    <last_updated>2026-09-18</last_updated>
+    <purpose>AI knowledge base for the personal portfolio of Vinodh Kumar Mandhala.</purpose>
+    <identity>
+      <full_name>Vinodh Kumar Mandhala</full_name>
+      <display_name>Vinodh Kumar</display_name>
+      <professional_identity>
+        <item>UX/UI Designer</item>
+        <item>Graphic Designer</item>
+        <item>Motion Designer</item>
+        <item>Design Lead</item>
+        <item>Creative Technology Practitioner</item>
+      </professional_identity>
+      <current_role>
+        <title>Team Lead — UX/UI &amp; Motion Design</title>
+        <company>iSpatial Techno Solutions (IST)</company>
+        <location>Hyderabad, Telangana, India</location>
+        <source_type>user-provided current profile information</source_type>
+      </current_role>
+      <experience_positioning>
+        <current_portfolio_positioning>18+ years of design experience</current_portfolio_positioning>
+        <public_linkedin_positioning>14+ years</public_linkedin_positioning>
+        <answering_rule>Use the current portfolio positioning when describing the portfolio; if specifically asked what LinkedIn says, report the LinkedIn wording.</answering_rule>
+      </experience_positioning>
+      <location>Hyderabad, Telangana, India</location>
+    </identity>
+    <professional_summary>
+      <short>Vinodh Kumar is a design professional focused on UX/UI, graphic design, motion graphics, visual communication, and creative technology.</short>
+      <expanded>Vinodh Kumar Mandhala is a multidisciplinary design professional whose work spans UX/UI design, graphic design, web design, motion graphics, visual communication, and AI-assisted creative workflows. His current portfolio positioning emphasizes design leadership, UX/UI, motion design, enterprise interfaces, geospatial/GIS experiences, design systems, and the use of emerging AI and creative technologies.</expanded>
+      <linkedin_about_reference>LinkedIn publicly describes his focus as designing exceptional user experiences and currently displays an About section beginning with a statement about UX being his passion.</linkedin_about_reference>
+    </professional_summary>
+    <current_role>
+      <company>iSpatial Techno Solutions (IST)</company>
+      <title>Team Lead — UX/UI &amp; Motion Design</title>
+      <responsibilities>
+        <item>Lead UX/UI design activities</item>
+        <item>Lead motion and visual design work</item>
+        <item>Mentor and guide designers</item>
+        <item>Contribute to design strategy and design systems</item>
+        <item>Work on enterprise and geospatial/GIS-oriented experiences</item>
+        <item>Explore AI-enabled design and creative technology workflows</item>
+      </responsibilities>
+      <team_context>User-provided profile information describes responsibility for an 8-member design/motion team.</team_context>
+      <source_type>user-provided current profile information</source_type>
+    </current_role>
+    <career_history>
+      <item>
+        <company>iSpatial Techno Solutions (IST)</company>
+        <title>Team Lead — UX/UI &amp; Motion Design</title>
+        <status>current</status>
+        <source>current user-provided profile information</source>
+      </item>
+      <item>
+        <company>Nextrow Digital Private Limited</company>
+        <title>UX Designer</title>
+        <period>July 2017 onward in historical resume</period>
+        <source>historical user-provided resume</source>
+        <note>Do not infer an end date from the historical resume.</note>
+      </item>
+      <item>
+        <company>Aparaa Solutions Private Limited / Quadmo Solutions</company>
+        <title>Senior Graphic/Web Designer</title>
+        <period>July 2012 onward in historical resume</period>
+        <source>historical user-provided resume</source>
+      </item>
+      <item>
+        <company>Lakshmi Info Solutions Private Limited</company>
+        <title>Senior Web Designer</title>
+        <period>November 2010 — June 2012</period>
+        <source>historical user-provided resume</source>
+      </item>
+      <item>
+        <company>Cipra Systems Private Limited</company>
+        <title>Senior Web/Graphic Designer</title>
+        <period>January 2008 — November 2010</period>
+        <source>historical user-provided resume</source>
+      </item>
+      <item>
+        <company>SCORELOGIX IQ Matics India Pvt Ltd</company>
+        <title>Web Designer</title>
+        <period>September 2006 — September 2008</period>
+        <source>historical user-provided resume</source>
+        <note>The historical resume contains overlapping dates. Preserve them rather than inventing corrections.</note>
+      </item>
+      <item>
+        <company>HAMSTECH Institute of Fashion &amp; Interior Designing</company>
+        <title>Web Designer / Graphic Designer</title>
+        <period>March 2005 — September 2006</period>
+        <source>historical user-provided resume</source>
+      </item>
+    </career_history>
+    <capabilities>
+      <ux_design>
+        <item>UX Strategy</item>
+        <item>User Experience Design</item>
+        <item>User Flows</item>
+        <item>Information Architecture</item>
+        <item>Interaction Design</item>
+        <item>Design Thinking</item>
+        <item>User Journey Mapping</item>
+        <item>Usability</item>
+        <item>Enterprise UX</item>
+        <item>Complex Workflow Simplification</item>
+        <item>GIS UX</item>
+        <item>Map UX</item>
+      </ux_design>
+      <ui_design>
+        <item>Interface Design</item>
+        <item>Design Systems</item>
+        <item>Component Design</item>
+        <item>Responsive Design</item>
+        <item>Dashboard Design</item>
+        <item>Enterprise Interfaces</item>
+        <item>Interaction Patterns</item>
+        <item>Visual Consistency</item>
+        <item>Data Visualization Interfaces</item>
+      </ui_design>
+      <graphic_design>
+        <item>Visual Design</item>
+        <item>Typography</item>
+        <item>Composition</item>
+        <item>Branding</item>
+        <item>Visual Identity</item>
+        <item>Creative Direction</item>
+        <item>Promotional Design</item>
+        <item>Advertising Design</item>
+        <item>Print Design</item>
+        <item>Digital Design</item>
+        <item>Image Editing</item>
+      </graphic_design>
+      <motion_design>
+        <item>Motion Graphics</item>
+        <item>Kinetic Typography</item>
+        <item>UI Animation</item>
+        <item>Video Design</item>
+        <item>Visual Effects</item>
+        <item>2D Animation</item>
+        <item>Motion Storytelling</item>
+        <item>Adobe After Effects</item>
+      </motion_design>
+      <web_frontend>
+        <item>HTML</item>
+        <item>CSS</item>
+        <item>JavaScript</item>
+        <item>jQuery</item>
+        <item>Responsive Design</item>
+        <item>Design-to-Code</item>
+        <item>UI Implementation</item>
+      </web_frontend>
+      <geospatial>
+        <item>GIS Interfaces</item>
+        <item>Map UX</item>
+        <item>Spatial UX</item>
+        <item>Location Intelligence</item>
+        <item>Geospatial Applications</item>
+        <item>Spatial Data Interfaces</item>
+        <item>Enterprise GIS UX</item>
+      </geospatial>
+      <ai_creative_technology>
+        <item>AI-assisted Design</item>
+        <item>Generative AI</item>
+        <item>AI Image Generation</item>
+        <item>AI Video Generation</item>
+        <item>Creative Automation</item>
+        <item>AI Prototyping</item>
+        <item>Prompt Engineering</item>
+        <item>Creative Coding</item>
+        <item>AI-powered Creative Workflows</item>
+      </ai_creative_technology>
+      <leadership>
+        <item>Design Leadership</item>
+        <item>Team Mentoring</item>
+        <item>Creative Direction</item>
+        <item>Design Reviews</item>
+        <item>UX Strategy</item>
+        <item>Cross-functional Collaboration</item>
+      </leadership>
+    </capabilities>
+    <tools_and_technologies>
+      <verified_from_historical_resume>
+        <item>Adobe Photoshop</item>
+        <item>Adobe Illustrator</item>
+        <item>HTML/CSS</item>
+        <item>JavaScript/jQuery</item>
+        <item>Adobe After Effects</item>
+        <item>Prototyping</item>
+        <item>2D Animation</item>
+        <item>Video Editing</item>
+        <item>Sound Editing</item>
+      </verified_from_historical_resume>
+      <portfolio_project_context>
+        <item>Figma</item>
+        <item>React</item>
+        <item>TypeScript</item>
+        <item>Three.js</item>
+        <item>WebGL</item>
+        <item>GitHub</item>
+        <item>Vercel</item>
+        <item>Lovable</item>
+      </portfolio_project_context>
+      <ai_tools_used_in_current_creative_workflows>
+        <item>ChatGPT</item>
+        <item>Claude</item>
+        <item>Gemini</item>
+        <item>Google Flow</item>
+        <item>Grok</item>
+      </ai_tools_used_in_current_creative_workflows>
+      <usage_rule>Do not claim a tool is an official certification or expert-level skill unless the knowledge base explicitly says so.</usage_rule>
+    </tools_and_technologies>
+    <education>
+      <item>
+        <qualification>Multimedia and Web Designing</qualification>
+        <institution>ZED Career Academy (A Division of Zee Telefilms Ltd.), Himayathnagar, Hyderabad</institution>
+        <source>historical user-provided resume</source>
+      </item>
+      <item>
+        <qualification>B.Com</qualification>
+        <institution>Dr. B. R. Ambedkar University</institution>
+        <source>historical user-provided resume</source>
+        <note>Exact degree naming/details may require confirmation.</note>
+      </item>
+      <item>
+        <qualification>Intermediate</qualification>
+        <institution>Sri Navys Jr. College</institution>
+        <year>2000</year>
+        <source>historical user-provided resume</source>
+      </item>
+      <item>
+        <qualification>S.S.C</qualification>
+        <institution>Mohun's Grammar High School</institution>
+        <year>1998</year>
+        <source>historical user-provided resume</source>
+      </item>
+    </education>
+    <certifications>
+      <item>
+        <name>Claude 101</name>
+        <issuer>Anthropic</issuer>
+        <issued>March 2026</issued>
+        <expires>April 2036</expires>
+        <credential_id>rnu386y3s85a</credential_id>
+        <source>public LinkedIn profile</source>
+      </item>
+    </certifications>
+    <portfolio>
+      <behance>
+        <url>https://www.behance.net/akkysigns</url>
+        <profile_title>Vinodh Kumar Mandhala - Lead - Design</profile_title>
+        <availability>Available for Freelance</availability>
+        <location>Hyderabad, India</location>
+        <work_experience_listed>
+          <item>Sr.Graphic/Web Designer — Aparaa Solutions Private Limited and Quadmo Solutions private limited</item>
+          <item>Sr. Web Designer — Lakshmi Info Solutions Private Limited</item>
+          <item>Sr. Web/Graphic Designer — Cipra Systems Private Limited</item>
+        </work_experience_listed>
+        <source>public Behance profile</source>
+      </behance>
+      <project_archive>
+        <item>Vibrant Social Media Banner Collection designed for IST</item>
+        <item>Smart Feild Geo Template</item>
+        <item>Marketo Brochure</item>
+        <item>AfterEffects</item>
+        <item>Social Ads</item>
+        <item>Landing Page - Nextrow</item>
+        <item>Nextrow Training Layouts</item>
+        <item>Rowdig Layouts</item>
+        <item>Banner &amp; Ads</item>
+        <item>Digital Sketch-MODI</item>
+        <item>Digital Sketch- Akshay Kumar</item>
+        <item>Ads</item>
+        <item>NextRow Ads</item>
+        <item>Marketing Automation Missconceptions</item>
+        <item>Nextrow Templates</item>
+        <item>TriFold Brochure for Rowdig</item>
+        <item>Creatives</item>
+        <item>Rowdig Whitepaper</item>
+        <item>Templates</item>
+        <item>MedMonitor New Designs</item>
+        <item>ER</item>
+        <item>MediMonitor</item>
+        <item>Promotions</item>
+        <item>OtherWorks</item>
+        <item>My Photography</item>
+        <item>InspirEdu</item>
+        <item>SIP</item>
+        <item>Fajme</item>
+        <item>MacherTech.com</item>
+      </project_archive>
+    </portfolio>
+    <project_taxonomy>
+      <ux_ui>
+        <item>MedMonitor New Designs</item>
+        <item>MediMonitor</item>
+        <item>ER</item>
+        <item>Smart Feild Geo Template</item>
+        <item>Landing Page - Nextrow</item>
+      </ux_ui>
+      <graphic_design>
+        <item>Marketo Brochure</item>
+        <item>TriFold Brochure for Rowdig</item>
+        <item>Rowdig Whitepaper</item>
+        <item>Promotions</item>
+        <item>Banner &amp; Ads</item>
+        <item>Creatives</item>
+      </graphic_design>
+      <motion>
+        <item>AfterEffects</item>
+      </motion>
+      <social_media_and_ads>
+        <item>Vibrant Social Media Banner Collection designed for IST</item>
+        <item>Social Ads</item>
+        <item>Ads</item>
+        <item>NextRow Ads</item>
+      </social_media_and_ads>
+      <web>
+        <item>Nextrow Templates</item>
+        <item>Nextrow Training Layouts</item>
+        <item>Landing Page - Nextrow</item>
+        <item>MacherTech.com</item>
+      </web>
+      <illustration>
+        <item>Digital Sketch-MODI</item>
+        <item>Digital Sketch- Akshay Kumar</item>
+      </illustration>
+      <photography>
+        <item>My Photography</item>
+      </photography>
+      <other>
+        <item>InspirEdu</item>
+        <item>SIP</item>
+        <item>Fajme</item>
+        <item>OtherWorks</item>
+        <item>Templates</item>
+        <item>Marketing Automation Missconceptions</item>
+      </other>
+      <classification_rule>These categories are navigation/classification labels, not claims about exact project contribution unless contribution is documented.</classification_rule>
+    </project_taxonomy>
+    <linkedin_articles>
+      <item>
+        <title>How to Design a Technical Poster When You’re Not an Expert: A Designer’s Guide to Clarity, Collaboration &amp; Visual Intelligence</title>
+        <date>2025-11-03</date>
+      </item>
+      <item>
+        <title>The Power of Visual Metaphorism in Graphic Design</title>
+        <date>2025-07-02</date>
+      </item>
+      <item>
+        <title>Understanding Client Psychology: A Scientific Approach for UX/Graphic Designers</title>
+        <date>2024-12-06</date>
+      </item>
+      <item>
+        <title>Overcoming 'Imposter Syndrome' as a UX/Graphic Designer</title>
+        <date>2024-12-03</date>
+      </item>
+      <item>
+        <title>Benchmarking in UX Design: A Comprehensive Guide for Beginners</title>
+        <date>2024-05-31</date>
+      </item>
+      <item>
+        <title>Design Fundamentals for Graphic and UX Designers</title>
+        <date>2024-05-22</date>
+      </item>
+      <item>
+        <title>Mastering the Magic of Adobe Photoshop's Content-Aware Fill Tool</title>
+        <date>2024-05-21</date>
+      </item>
+    </linkedin_articles>
+    <public_links>
+      <linkedin>https://www.linkedin.com/in/vinnythewebdesigner/</linkedin>
+      <behance>https://www.behance.net/akkysigns</behance>
+      <personal_website_1>https://av-screener.vercel.app/</personal_website_1>
+      <personal_website_2>http://mandhalens.portfoliobox.net/</personal_website_2>
+    </public_links>
+    <assistant_behavior>
+      <identity>You are the portfolio intelligence assistant for Vinodh Kumar Mandhala.</identity>
+      <primary_goal>Answer questions about Vinodh's professional background, skills, experience, projects, design disciplines, certifications, articles, and portfolio.</primary_goal>
+      <rules>
+        <item>Use only information contained in this knowledge base unless the application explicitly provides another trusted source.</item>
+        <item>Never invent companies, job titles, dates, clients, responsibilities, awards, certifications, project contributions, metrics, or technologies.</item>
+        <item>Distinguish current information from historical information.</item>
+        <item>If two sources differ, preserve the difference and explain the source rather than silently merging them.</item>
+        <item>For experience duration, use the current portfolio positioning when answering general portfolio questions; use the public LinkedIn wording when specifically asked about LinkedIn.</item>
+        <item>Do not correct overlapping historical resume dates unless the user supplies corrected dates.</item>
+        <item>Do not claim ownership or contribution to a portfolio project unless contribution is documented.</item>
+        <item>When asked about a project, return the project name, likely discipline/category, documented contribution if available, and portfolio link when available.</item>
+        <item>When asked about tools, distinguish tools explicitly listed in the historical resume from tools appearing in current project context.</item>
+        <item>If the requested information is missing, answer: 'I don't have that information in Vinodh's portfolio knowledge base.'</item>
+        <item>Keep answers concise by default and expand when the visitor asks for details.</item>
+        <item>Do not expose internal source metadata unless useful for resolving a factual discrepancy.</item>
+        <item>Treat the knowledge base as structured professional information, not as a generic biography.</item>
+      </rules>
+      <tone>
+        <item>Professional</item>
+        <item>Confident</item>
+        <item>Clear</item>
+        <item>Human</item>
+        <item>Design-focused</item>
+        <item>Technically aware</item>
+      </tone>
+    </assistant_behavior>
+    <source_registry>
+      <item>
+        <id>linkedin_profile</id>
+        <type>public_web</type>
+        <url>https://www.linkedin.com/in/vinnythewebdesigner/</url>
+        <supports>
+          <item>public profile identity</item>
+          <item>Hyderabad location</item>
+          <item>public About positioning</item>
+          <item>public articles</item>
+          <item>Anthropic Claude 101 certification</item>
+          <item>current association with iSpatial Techno Solutions</item>
+        </supports>
+      </item>
+      <item>
+        <id>behance_profile</id>
+        <type>public_web</type>
+        <url>https://www.behance.net/akkysigns</url>
+        <supports>
+          <item>portfolio profile</item>
+          <item>work experience listed on Behance</item>
+          <item>project archive</item>
+        </supports>
+      </item>
+      <item>
+        <id>historical_resume</id>
+        <type>user_provided_document</type>
+        <supports>
+          <item>historical employment entries</item>
+          <item>historical skills</item>
+          <item>education</item>
+          <item>legacy portfolio links</item>
+        </supports>
+        <note>Some employment dates overlap; the original information is preserved without correction.</note>
+      </item>
+      <item>
+        <id>current_profile_context</id>
+        <type>user_provided_information</type>
+        <supports>
+          <item>current Team Lead — UX/UI &amp; Motion Design positioning</item>
+          <item>18+ years current portfolio positioning</item>
+          <item>current design leadership and team context</item>
+        </supports>
+      </item>
+    </source_registry>
+  </knowledge_base>
+</vinodh_portfolio_knowledge_base>

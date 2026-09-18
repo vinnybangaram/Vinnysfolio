@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="page-title">Article — Vinodh Kumar Design Intelligence</title>
+    <meta name="description" id="page-meta-desc" content="Published article by Vinodh Kumar, Team Lead UX/UI & Motion Designer." />
+    
+    <!-- Preconnect Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <!-- Open Graph Metadata -->
+    <meta property="og:title" id="og-title" content="Article — Vinodh Kumar" />
+    <meta property="og:description" id="og-desc" content="Design essay by Vinodh Kumar" />
+    <meta property="og:type" content="article" />
+    
+    <link rel="stylesheet" href="./src/styles/tokens.css" />
+    <link rel="stylesheet" href="./src/styles/main.css" />
+  </head>
+  <body class="article-detail-subpage">
+    <!-- Top Fixed Reading Progress Indicator -->
+    <div class="reading-progress-track">
+      <div id="reading-progress-bar" class="reading-progress-bar"></div>
+    </div>
+
+    <div id="app">
+      <!-- Fixed Global Header / Navigation -->
+      <header class="site-header" id="site-header">
+        <div class="header-left">
+          <a href="index.html" class="logo-link" aria-label="Vinodh Kumar Home">
+            <span class="logo-mark">VK</span>
+            <div class="logo-info">
+              <span class="logo-name">Vinodh Kumar</span>
+              <span class="logo-title">Design × Motion × AI</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="header-center">
+          <div class="articles-nav-breadcrumb">
+            <a href="index.html" class="breadcrumb-link">Portfolio</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="articles.html" class="breadcrumb-link">Articles</a>
+            <span class="breadcrumb-sep">/</span>
+            <span id="breadcrumb-title" class="breadcrumb-current truncate">Reading Essay...</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <a href="articles.html" class="header-nav-link back-link">
+            <span>← All Articles</span>
+          </a>
+          <button id="copy-article-link-btn" class="share-article-btn" aria-label="Copy Article Link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            <span id="share-btn-text">Share Link</span>
+          </button>
+          <a id="nav-linkedin-original" href="https://www.linkedin.com/in/vinnythewebdesigner/recent-activity/articles/" target="_blank" rel="noopener noreferrer" class="articles-linkedin-cta" aria-label="View on LinkedIn">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 0 0 0-3.28 1.64 1.64 0 0 0 0 3.28m1.39 9.74v-8.37H5.07v8.37h2.78z"/></svg>
+            <span>Discuss on LinkedIn</span>
+            <span class="arrow-glyph">↗</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- Main Article Content Container -->
+      <main class="article-detail-main">
+        <article class="article-reading-canvas" id="article-canvas">
+          <!-- Populated dynamically via articleDetail.ts -->
+          <div class="article-loading-state" id="article-loading">
+            <div class="loading-spinner"></div>
+            <span>Loading published article...</span>
+          </div>
+        </article>
+      </main>
+
+      <!-- Site Footer -->
+      <footer class="site-footer" id="contact">
+        <div class="portfolio-container footer-flex">
+          <div class="footer-left">
+            <span class="footer-logo">VINODH KUMAR</span>
+            <p>Principal Designer · Team Lead UX/UI & Motion · Creative Technologist</p>
+            <span class="footer-copy">© 2026 Vinodh Kumar. All rights reserved.</span>
+          </div>
+
+          <div class="footer-social-links">
+            <a href="articles.html" class="footer-link">
+              <span>← Back to Articles Hub</span>
+            </a>
+            <a href="index.html" class="footer-link">
+              <span>Portfolio Home</span>
+            </a>
+            <a href="https://www.linkedin.com/in/vinnythewebdesigner/" target="_blank" rel="noopener noreferrer" class="footer-link special">
+              <span>LinkedIn (22K+)</span>
+              <span class="arrow-glyph">↗</span>
+            </a>
+            <a href="mailto:mandhalavinodh@gmail.com" class="footer-link">
+              <span>mandhalavinodh@gmail.com</span>
+            </a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Script Controller -->
+    <script type="module" src="./src/articleDetail.ts"></script>
+  </body>
+</html>
