@@ -178,6 +178,20 @@ export const BRAND_ICONS: Record<string, string> = {
   `,
 
   // 6. Category Icons
+  uxCategory: `
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="2" y="3" width="20" height="14" rx="2"/>
+      <line x1="8" y1="21" x2="16" y2="21"/>
+      <line x1="12" y1="17" x2="12" y2="21"/>
+    </svg>
+  `,
+  graphicCategory: `
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="m12 19 7-7 3 3-7 7-3-3z"/>
+      <path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+      <circle cx="11" cy="11" r="2"/>
+    </svg>
+  `,
   designCategory: `
     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
       <circle cx="12" cy="12" r="10"/>
@@ -269,11 +283,12 @@ export function getToolIcon(toolName: string): string {
 
 export function getCategoryIcon(cat: string): string {
   const c = cat.toUpperCase();
-  if (c.includes('DESIGN')) return BRAND_ICONS.designCategory;
-  if (c.includes('MOTION')) return BRAND_ICONS.motionCategory;
+  if (c.includes('UX') || c.includes('UI')) return BRAND_ICONS.uxCategory;
   if (c.includes('FRONT')) return BRAND_ICONS.frontendCategory;
+  if (c.includes('GRAPHIC')) return BRAND_ICONS.graphicCategory;
+  if (c.includes('MOTION')) return BRAND_ICONS.motionCategory;
   if (c.includes('AI')) return BRAND_ICONS.aiCategory;
-  if (c.includes('GEO') || c.includes('PRODUCT')) return BRAND_ICONS.geospatialCategory;
+  if (c.includes('GEO') || c.includes('PRODUCT') || c.includes('ENTERPRISE')) return BRAND_ICONS.geospatialCategory;
   if (c.includes('LEADER')) return BRAND_ICONS.leadershipCategory;
   return BRAND_ICONS.designCategory;
 }

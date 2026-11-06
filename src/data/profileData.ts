@@ -149,7 +149,7 @@ export const PROFILE_DATA: ProfileData = {
   teamSize: '8 Members',
   experienceYears: '18+',
   followersCount: '22K+',
-  disciplinesSummary: 'UX × UI × MOTION × AI',
+  disciplinesSummary: 'UX/UI × FRONT-END × GRAPHICS × MOTION × AI',
   editorialStatement: `A multidisciplinary design leader with 18+ years of experience engineering high-impact digital experiences, spatial geospatial intelligence platforms, telematics, and applied AI systems. Blending cognitive human ergonomics with computational precision and kinetic storytelling.`,
   
   socialLinks: {
@@ -170,9 +170,9 @@ export const PROFILE_DATA: ProfileData = {
       sub: 'Led & mentored at iSpatial'
     },
     {
-      value: 'UX × UI × AI',
+      value: 'UX × DEV × AI',
       label: 'Core Disciplines',
-      sub: 'Motion, Systems & Creative Tech'
+      sub: 'UX/UI, Front-End, Graphics & Motion'
     },
     {
       value: '22K+',
@@ -390,52 +390,52 @@ export const PROFILE_DATA: ProfileData = {
 
   disciplines: [
     {
+      id: 'ux-ui-design',
+      title: 'UX/UI DESIGN',
+      tagline: 'Cognitive Ergonomics × Living Design Token Systems',
+      badge: 'DISCIPLINE 01',
+      accent: '#38bdf8',
+      summary: 'Deconstructing dense, high-friction enterprise workflows into intuitive mental models, paired with scalable multi-brand design systems, atomic components, and WCAG AAA compliant interface architectures.',
+      focusAreas: [
+        'Cognitive Load Reduction & Mental Models',
+        'Living Design Token Pipelines (Figma to Code)',
+        'Complex Workflow & User Journey Architecture',
+        'Enterprise Dashboards & Multi-Screen Consoles',
+        'WCAG AAA Accessibility & State Architecture'
+      ],
+      kineticVisual: 'token-flow'
+    },
+    {
+      id: 'front-end',
+      title: 'FRONT-END DEVELOPMENT',
+      tagline: 'Semantic Markup · Modern CSS Architecture · Clean UI Code',
+      badge: 'DISCIPLINE 02',
+      accent: '#34d399',
+      summary: 'Bridging the design canvas and production code. Engineering semantic, accessible HTML5/CSS3/TypeScript layouts, interactive component structures, and fluid 60fps responsive interfaces.',
+      focusAreas: [
+        'Semantic HTML5 & Accessible DOM Structure',
+        'Modern CSS Architecture (Grid, Flexbox, Tokens)',
+        'Pixel-Perfect Design-to-Code Translation',
+        'Interactive Component & Micro-Layout Engineering',
+        'Web Performance & Responsive Multi-Screen Handoff'
+      ],
+      kineticVisual: 'css-layout'
+    },
+    {
       id: 'graphic-design',
       title: 'GRAPHIC DESIGN',
       tagline: 'Visual Form · Typographic Order · Optical Balance',
-      badge: 'DISCIPLINE 01',
-      accent: '#38bdf8',
+      badge: 'DISCIPLINE 03',
+      accent: '#fb923c',
       summary: 'The bedrock of all digital communication. Leveraging 8pt baseline grids, golden ratio proportions, contrast ratios, and deliberate negative space to create visual clarity and memorable brand presence.',
       focusAreas: [
-        'Visual Communication & Semiomics',
+        'Visual Communication & Semiotics',
         'Corporate Identity & Brand Systems',
         'Mathematical Composition & Grids',
         'Typographic Hierarchy & Kerning',
         'Art Direction & Editorial Precision'
       ],
       kineticVisual: 'grid-matrix'
-    },
-    {
-      id: 'ux-design',
-      title: 'UX DESIGN',
-      tagline: 'Understanding Human Psychology × Simplifying Complexity',
-      badge: 'DISCIPLINE 02',
-      accent: '#818cf8',
-      summary: 'Deconstructing dense, high-friction enterprise workflows into intuitive mental models. Mapping user journeys, information hierarchy, and cognitive ergonomics to empower confident decision-making.',
-      focusAreas: [
-        'Cognitive Load Reduction & Mental Models',
-        'Information Architecture & Navigation Trees',
-        'Complex Workflow Simplification',
-        'User Journey & Task-Flow Mapping',
-        'Quantitative Usability Benchmarking'
-      ],
-      kineticVisual: 'flow-network'
-    },
-    {
-      id: 'ui-design',
-      title: 'UI DESIGN',
-      tagline: 'Living Token Systems · Cohesive Component Ecosystems',
-      badge: 'DISCIPLINE 03',
-      accent: '#34d399',
-      summary: 'Designing high-density dashboards, multi-screen consoles, and accessible design system token architectures that scale effortlessly across responsive web, desktop, and mobile viewports.',
-      focusAreas: [
-        'Design Token Pipelines (Figma to Code)',
-        'Enterprise Dashboards & Data Tables',
-        'WCAG AAA Accessibility Compliance',
-        'Component State Architecture',
-        'Living Multi-Brand Pattern Libraries'
-      ],
-      kineticVisual: 'component-stack'
     },
     {
       id: 'motion-design',
@@ -455,7 +455,7 @@ export const PROFILE_DATA: ProfileData = {
     },
     {
       id: 'ai-design',
-      title: 'AI × DESIGN',
+      title: 'AI × CREATIVE TECH',
       tagline: 'Human Intent Amplified · Generative Workflows & Automation',
       badge: 'DISCIPLINE 05',
       accent: '#fbbf24',
@@ -473,84 +473,90 @@ export const PROFILE_DATA: ProfileData = {
 
   skills: [
     {
-      category: 'DESIGN',
+      category: 'UX/UI DESIGN',
       icon: '✦',
       skills: [
-        'UX Design',
-        'UI Design',
-        'Graphic Design',
-        'Visual Design',
-        'Interaction Design',
-        'Design Systems',
+        'Design Systems & Tokens',
+        'UX Research & Usability Testing',
         'Information Architecture',
-        'Visual Storytelling',
-        'Art Direction'
+        'Interactive Prototyping',
+        'Enterprise Dashboards',
+        'User Journey Mapping',
+        'WCAG AAA Accessibility',
+        'Cognitive Ergonomics'
       ]
     },
     {
-      category: 'MOTION',
-      icon: '⚡',
-      skills: [
-        'Motion Graphics',
-        'Kinetic Typography',
-        'UI Motion',
-        'Video Design',
-        'Visual Effects',
-        'Animation & Easing',
-        'Bézier Physics'
-      ]
-    },
-    {
-      category: 'FRONT-END',
+      category: 'FRONT-END DEVELOPMENT',
       icon: '⌥',
       skills: [
-        'HTML5 Semantic Markup',
-        'CSS3 / Modern CSS Architecture',
-        'Responsive Design',
-        'UI Implementation',
-        'Design-to-Code Workflows',
-        'Frontend Collaboration'
+        'HTML5 Semantic Architecture',
+        'Modern CSS3 / Flex & Grid',
+        'Responsive Multi-Device Layouts',
+        'Design-to-Code Translation',
+        'TypeScript & ES6+ JavaScript',
+        'UI Component Systems',
+        'Web Performance Tuning'
       ]
     },
     {
-      category: 'AI / CREATIVE TECH',
+      category: 'GRAPHIC DESIGN',
+      icon: '❖',
+      skills: [
+        'Visual Identity & Branding',
+        'Typographic Hierarchy & Baselines',
+        '8pt Mathematical Grids',
+        'Marketing & Summit Collateral',
+        'Art Direction & Editorial',
+        'Vector Asset Engineering'
+      ]
+    },
+    {
+      category: 'MOTION DESIGN',
+      icon: '⚡',
+      skills: [
+        'Cubic-Bézier Physics & Springs',
+        'Functional Micro-Interactions',
+        'Kinetic Typography',
+        'State Transition Choreography',
+        '60 FPS Canvas & SVG Animation',
+        'Video Editing & Motion Graphics'
+      ]
+    },
+    {
+      category: 'AI × CREATIVE TECH',
       icon: '◈',
       skills: [
-        'Generative AI',
-        'AI-Assisted Design',
-        'AI Image Generation',
-        'AI Video Generation',
-        'Creative Automation',
-        'AI Prototyping',
-        'Prompt Engineering',
-        'Computer Vision',
-        'Creative Coding'
+        'Generative AI Workflows',
+        'AI-Assisted Interface Prototyping',
+        'System Prompt Architecture',
+        'Local GPU Neural Inference',
+        'Creative Coding & Generative Canvas',
+        'Multimodal Media Synthesis'
       ]
     },
     {
-      category: 'GEOSPATIAL / PRODUCT',
+      category: 'GEOSPATIAL & ENTERPRISE',
       icon: '◎',
       skills: [
-        'GIS Interfaces',
-        'Map UX',
-        'Spatial Design',
-        'Data Visualization',
-        'Enterprise UX',
-        'Location Intelligence',
-        'Telematics Command'
+        '2D / 3D GIS Interfaces',
+        'Spatial Map UX & Layering',
+        'Fleet Telematics Tracking',
+        'Real-Time Telemetry HUDs',
+        'High-Density Data Visualizations',
+        'Mission-Critical Operations'
       ]
     },
     {
-      category: 'LEADERSHIP',
+      category: 'DESIGN LEADERSHIP & OPS',
       icon: '▲',
       skills: [
-        'Design Leadership',
-        'Team Mentoring',
-        'Design Reviews',
-        'Creative Direction',
-        'UX Strategy',
-        'Design Systems Leadership',
-        'Cross-Functional Alignment'
+        'Team Mentorship (8+ Designers)',
+        'Cross-Functional Alignment',
+        'Enterprise Design Strategy',
+        'Design Quality Reviews',
+        'Design Ops Acceleration',
+        'Executive Presentations'
       ]
     }
   ],

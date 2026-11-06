@@ -347,12 +347,32 @@
             <div class="section-badge">COMPETENCY ARCHITECTURE // VERIFIED</div>
             <h2 class="section-title">Specialized Skill Matrix</h2>
             <p class="section-subtitle">
-              Deep, factual capabilities grouped into six structural domains—from ergonomics and front-end code to spatial GIS and design leadership.
+              Deep, factual capabilities grouped into seven structural domains—from ergonomics and front-end code to spatial GIS and design leadership.
             </p>
           </header>
 
-          <!-- 3D ORBITAL COMPETENCY GALAXY -->
-          <div class="orbital-galaxy-wrapper">
+          <!-- VIEW SWITCHER & SEARCH TOOLBAR -->
+          <div class="skill-matrix-toolbar">
+            <div class="skill-view-tabs" role="tablist">
+              <button type="button" class="skill-view-tab active" data-view="matrix" id="btn-view-matrix" role="tab" aria-selected="true">
+                <span class="view-tab-icon">▦</span>
+                <span class="view-tab-text">Structured Matrix</span>
+              </button>
+              <button type="button" class="skill-view-tab" data-view="galaxy" id="btn-view-galaxy" role="tab" aria-selected="false">
+                <span class="view-tab-icon">✦</span>
+                <span class="view-tab-text">3D Orbital Constellation</span>
+              </button>
+            </div>
+
+            <div class="skill-search-wrapper">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="skill-search-input" class="skill-search-input" placeholder="Search competencies (e.g. Figma, CSS, Motion, GIS, AI)..." />
+              <button type="button" id="skill-search-clear" class="skill-search-clear" style="display: none;" aria-label="Clear search">✕</button>
+            </div>
+          </div>
+
+          <!-- 3D ORBITAL COMPETENCY GALAXY (TOGGLEABLE) -->
+          <div id="orbital-galaxy-wrapper" class="orbital-galaxy-wrapper" style="display: none;">
             <div class="galaxy-hud-header">
               <div class="galaxy-legend-tags">
                 <span class="galaxy-tag"><span class="galaxy-dot"></span> 3D ORBITAL SKILL CONSTELLATION</span>
@@ -360,9 +380,9 @@
               </div>
               <div id="galaxy-skill-hud" class="galaxy-node-hud">
                 <span class="node-hud-prefix">INSPECTING:</span>
-                <strong id="galaxy-node-name">UI Architecture & Systems</strong>
+                <strong id="galaxy-node-name">Design Systems & Tokens</strong>
                 <span class="node-hud-divider">·</span>
-                <span id="galaxy-node-cat">UI & UX DESIGN</span>
+                <span id="galaxy-node-cat">UX/UI DESIGN</span>
                 <span class="node-hud-badge" id="galaxy-node-metric">STATUS: ACTIVE IN PRODUCTION</span>
               </div>
             </div>

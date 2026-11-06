@@ -7,7 +7,9 @@ export class InteractivePlayground {
 
   public init(): void {
     // 1. Disciplines Micro-Sandboxes
+    this.initUxUiSubtabs();
     this.initTokenWorkbench();
+    this.initFrontendWorkbench();
     this.initMotionPlayground();
     this.initJourneyGraph();
     this.initGraphicWorkbench();
@@ -24,6 +26,92 @@ export class InteractivePlayground {
 
     // 5. Tool Stack Combinator (Interactive Workflow Synthesizer)
     this.initStackCombinator();
+  }
+
+  // -------------------------------------------------------------
+  // 0. UX/UI SUBTABS & FRONTEND WORKBENCH
+  // -------------------------------------------------------------
+  private initUxUiSubtabs(): void {
+    const tabTokens = document.getElementById('tab-uxui-tokens');
+    const tabFlow = document.getElementById('tab-uxui-flow');
+    const panelTokens = document.getElementById('panel-uxui-tokens');
+    const panelFlow = document.getElementById('panel-uxui-flow');
+
+    if (!tabTokens || !tabFlow || !panelTokens || !panelFlow) return;
+
+    tabTokens.addEventListener('click', () => {
+      tabTokens.classList.add('active');
+      tabFlow.classList.remove('active');
+      panelTokens.style.display = 'block';
+      panelFlow.style.display = 'none';
+    });
+
+    tabFlow.addEventListener('click', () => {
+      tabFlow.classList.add('active');
+      tabTokens.classList.remove('active');
+      panelFlow.style.display = 'block';
+      panelTokens.style.display = 'none';
+    });
+  }
+
+  private initFrontendWorkbench(): void {
+    const stage = document.getElementById('frontend-preview-stage');
+    const codeOut = document.getElementById('frontend-code-output');
+    const modeBtns = document.querySelectorAll('.fe-mode-btn');
+    const justifyBtns = document.querySelectorAll('.fe-justify-btn');
+    const gapSlider = document.getElementById('fe-slider-gap') as HTMLInputElement | null;
+    const gapVal = document.getElementById('val-fe-gap');
+
+    if (!stage || !codeOut) return;
+
+    let displayMode = 'flex';
+    let justifyMode = 'space-between';
+    let currentGap = '12px';
+
+    const updateStage = () => {
+      stage.style.display = displayMode;
+      if (displayMode === 'flex') {
+        stage.style.flexDirection = 'row';
+        stage.style.justifyContent = justifyMode;
+        stage.style.alignItems = 'center';
+      } else {
+        stage.style.gridTemplateColumns = 'repeat(3, 1fr)';
+        stage.style.justifyItems = 'stretch';
+        stage.style.alignItems = 'center';
+      }
+      stage.style.gap = currentGap;
+
+      if (gapVal) gapVal.textContent = currentGap;
+
+      codeOut.innerHTML = `<code>display: ${displayMode}; ${displayMode === 'flex' ? `justify-content: ${justifyMode};` : 'grid-template-columns: repeat(3, 1fr);'} gap: ${currentGap};</code>`;
+    };
+
+    modeBtns.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        const target = e.currentTarget as HTMLElement;
+        modeBtns.forEach((b) => b.classList.remove('active'));
+        target.classList.add('active');
+        displayMode = target.getAttribute('data-mode') || 'flex';
+        updateStage();
+      });
+    });
+
+    justifyBtns.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        const target = e.currentTarget as HTMLElement;
+        justifyBtns.forEach((b) => b.classList.remove('active'));
+        target.classList.add('active');
+        justifyMode = target.getAttribute('data-justify') || 'space-between';
+        updateStage();
+      });
+    });
+
+    gapSlider?.addEventListener('input', () => {
+      currentGap = `${gapSlider.value}px`;
+      updateStage();
+    });
+
+    updateStage();
   }
 
   // -------------------------------------------------------------
