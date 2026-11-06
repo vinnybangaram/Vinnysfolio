@@ -3,8 +3,6 @@ import { BRAND_ICONS, getToolIcon, getCategoryIcon } from '../utils/icons';
 
 export class ProfileController {
   private activeSkillCategory: string = 'ALL';
-  private skillSearchQuery: string = '';
-  private skillViewMode: 'matrix' | 'galaxy' = 'matrix';
   private activeArticleCategory: string = 'ALL';
 
   constructor() {
@@ -30,100 +28,7 @@ export class ProfileController {
     container.innerHTML = PROFILE_DATA.disciplines
       .map((d) => {
         let sandboxMarkup = '';
-        if (d.id === 'ux-ui-design') {
-          sandboxMarkup = `
-            <div class="discipline-sandbox ux-ui-sandbox">
-              <div class="sandbox-header">
-                <div class="sandbox-subtabs-row">
-                  <button type="button" class="sandbox-subtab active" id="tab-uxui-tokens">Tokens Studio</button>
-                  <button type="button" class="sandbox-subtab" id="tab-uxui-flow">Flow Telemetry</button>
-                </div>
-                <span class="sandbox-status">● LIVE PIPELINE</span>
-              </div>
-
-              <!-- Subpanel 1: Design Tokens Studio -->
-              <div id="panel-uxui-tokens" class="sandbox-panel active">
-                <div class="token-header-row">
-                  <span class="sandbox-tag">DESIGN TOKEN STUDIO</span>
-                  <div class="token-hue-picker">
-                    <span class="token-hue-dot active" data-hue="#38bdf8" style="background:#38bdf8;" title="Cyan"></span>
-                    <span class="token-hue-dot" data-hue="#fbbf24" style="background:#fbbf24;" title="Amber"></span>
-                    <span class="token-hue-dot" data-hue="#c084fc" style="background:#c084fc;" title="Violet"></span>
-                    <span class="token-hue-dot" data-hue="#34d399" style="background:#34d399;" title="Emerald"></span>
-                  </div>
-                </div>
-                <div class="token-preview-card" id="token-preview-card">
-                  <div class="token-card-top">
-                    <span class="token-chip">TOKENIZED UI</span>
-                    <span class="token-dot-live"></span>
-                  </div>
-                  <div class="token-code-preview" id="token-code-output">
-                    <code>--glass-blur: 20px; --radius: 16px;</code>
-                  </div>
-                </div>
-                <div class="token-controls-grid">
-                  <div class="token-slider-item">
-                    <div class="slider-meta"><span>Blur</span><span id="val-blur">20px</span></div>
-                    <input type="range" id="token-slider-blur" min="0" max="40" value="20" class="mini-slider" />
-                  </div>
-                  <div class="token-slider-item">
-                    <div class="slider-meta"><span>Radius</span><span id="val-radius">16px</span></div>
-                    <input type="range" id="token-slider-radius" min="0" max="32" value="16" class="mini-slider" />
-                  </div>
-                </div>
-              </div>
-
-              <!-- Subpanel 2: UX Flow Telemetry -->
-              <div id="panel-uxui-flow" class="sandbox-panel" style="display: none;">
-                <div class="journey-flow-nodes">
-                  <button type="button" class="journey-flow-node active" data-node="intent">01 Intent</button>
-                  <span class="flow-arrow">→</span>
-                  <button type="button" class="journey-flow-node" data-node="spatial">02 Spatial</button>
-                  <span class="flow-arrow">→</span>
-                  <button type="button" class="journey-flow-node" data-node="cognition">03 Cognition</button>
-                  <span class="flow-arrow">→</span>
-                  <button type="button" class="journey-flow-node" data-node="decision">04 Action</button>
-                </div>
-                <div class="journey-readout-box">
-                  <h5 id="journey-readout-title">01 // INTENT DETECTION & CONTEXT</h5>
-                  <p id="journey-readout-desc">Capturing real-time operator queries, telemetry triggers, or map interactions without cognitive friction.</p>
-                  <span class="journey-metric" id="journey-readout-metric">LATENCY: &lt;8ms · RECOG: 99.4%</span>
-                </div>
-              </div>
-            </div>
-          `;
-        } else if (d.id === 'front-end') {
-          sandboxMarkup = `
-            <div class="discipline-sandbox frontend-sandbox">
-              <div class="sandbox-header">
-                <span class="sandbox-tag">CSS LAYOUT & BOX MODEL LAB</span>
-                <span class="sandbox-status">● 60 FPS RENDER</span>
-              </div>
-              <div class="frontend-sandbox-controls">
-                <div class="btn-group-mini">
-                  <button type="button" class="fe-mode-btn active" data-mode="flex">Flex</button>
-                  <button type="button" class="fe-mode-btn" data-mode="grid">Grid</button>
-                </div>
-                <div class="btn-group-mini">
-                  <button type="button" class="fe-justify-btn active" data-justify="space-between">Spread</button>
-                  <button type="button" class="fe-justify-btn" data-justify="center">Center</button>
-                </div>
-                <div class="fe-slider-row">
-                  <span class="ctrl-label">Gap: <strong id="val-fe-gap">12px</strong></span>
-                  <input type="range" id="fe-slider-gap" min="4" max="24" value="12" class="mini-slider" />
-                </div>
-              </div>
-              <div class="frontend-preview-stage" id="frontend-preview-stage">
-                <div class="frontend-box-item">&lt;Nav /&gt;</div>
-                <div class="frontend-box-item">&lt;DataGrid /&gt;</div>
-                <div class="frontend-box-item">&lt;HUD /&gt;</div>
-              </div>
-              <div class="frontend-code-preview" id="frontend-code-output">
-                <code>display: flex; justify-content: space-between; gap: 12px;</code>
-              </div>
-            </div>
-          `;
-        } else if (d.id === 'graphic-design') {
+        if (d.id === 'graphic-design') {
           sandboxMarkup = `
             <div class="discipline-sandbox graphic-sandbox">
               <div class="sandbox-header">
@@ -135,6 +40,62 @@ export class ProfileController {
                 <input type="range" id="grid-slider-cols" min="4" max="12" value="6" class="mini-slider" />
               </div>
               <div class="grid-demo-columns" id="grid-demo-columns"></div>
+            </div>
+          `;
+        } else if (d.id === 'ux-design') {
+          sandboxMarkup = `
+            <div class="discipline-sandbox ux-sandbox">
+              <div class="sandbox-header">
+                <span class="sandbox-tag">INTERACTIVE FLOW TELEMETRY</span>
+                <span class="sandbox-status">● LIVE PIPELINE</span>
+              </div>
+              <div class="journey-flow-nodes">
+                <button type="button" class="journey-flow-node active" data-node="intent">01 Intent</button>
+                <span class="flow-arrow">→</span>
+                <button type="button" class="journey-flow-node" data-node="spatial">02 Spatial</button>
+                <span class="flow-arrow">→</span>
+                <button type="button" class="journey-flow-node" data-node="cognition">03 Cognition</button>
+                <span class="flow-arrow">→</span>
+                <button type="button" class="journey-flow-node" data-node="decision">04 Action</button>
+              </div>
+              <div class="journey-readout-box">
+                <h5 id="journey-readout-title">01 // INTENT DETECTION & CONTEXT</h5>
+                <p id="journey-readout-desc">Capturing real-time operator queries, telemetry triggers, or map interactions without cognitive friction.</p>
+                <span class="journey-metric" id="journey-readout-metric">LATENCY: &lt;8ms · RECOG: 99.4%</span>
+              </div>
+            </div>
+          `;
+        } else if (d.id === 'ui-design') {
+          sandboxMarkup = `
+            <div class="discipline-sandbox ui-sandbox">
+              <div class="sandbox-header">
+                <span class="sandbox-tag">LIVE DESIGN TOKEN STUDIO</span>
+                <div class="token-hue-picker">
+                  <span class="token-hue-dot active" data-hue="#38bdf8" style="background:#38bdf8;" title="Cyan"></span>
+                  <span class="token-hue-dot" data-hue="#fbbf24" style="background:#fbbf24;" title="Amber"></span>
+                  <span class="token-hue-dot" data-hue="#c084fc" style="background:#c084fc;" title="Violet"></span>
+                  <span class="token-hue-dot" data-hue="#34d399" style="background:#34d399;" title="Emerald"></span>
+                </div>
+              </div>
+              <div class="token-preview-card" id="token-preview-card">
+                <div class="token-card-top">
+                  <span class="token-chip">TOKENIZED UI</span>
+                  <span class="token-dot-live"></span>
+                </div>
+                <div class="token-code-preview" id="token-code-output">
+                  <code>--glass-blur: 20px; --radius: 16px;</code>
+                </div>
+              </div>
+              <div class="token-controls-grid">
+                <div class="token-slider-item">
+                  <div class="slider-meta"><span>Blur</span><span id="val-blur">20px</span></div>
+                  <input type="range" id="token-slider-blur" min="0" max="40" value="20" class="mini-slider" />
+                </div>
+                <div class="token-slider-item">
+                  <div class="slider-meta"><span>Radius</span><span id="val-radius">16px</span></div>
+                  <input type="range" id="token-slider-radius" min="0" max="32" value="16" class="mini-slider" />
+                </div>
+              </div>
             </div>
           `;
         } else if (d.id === 'motion-design') {
@@ -201,184 +162,76 @@ export class ProfileController {
 
   // 2. SKILLS MATRIX
   private renderSkillMatrix(): void {
-    this.initSkillViewSwitcher();
-    this.initSkillSearch();
-    this.renderSkillMatrixFilters();
-    this.renderSkillMatrixGrid();
-  }
-
-  private initSkillViewSwitcher(): void {
-    const btnMatrix = document.getElementById('btn-view-matrix');
-    const btnGalaxy = document.getElementById('btn-view-galaxy');
-    const galaxyWrap = document.getElementById('orbital-galaxy-wrapper');
-
-    if (!btnMatrix || !btnGalaxy || !galaxyWrap) return;
-
-    btnMatrix.addEventListener('click', () => {
-      this.skillViewMode = 'matrix';
-      btnMatrix.classList.add('active');
-      btnGalaxy.classList.remove('active');
-      btnMatrix.setAttribute('aria-selected', 'true');
-      btnGalaxy.setAttribute('aria-selected', 'false');
-      galaxyWrap.style.display = 'none';
-    });
-
-    btnGalaxy.addEventListener('click', () => {
-      this.skillViewMode = 'galaxy';
-      btnGalaxy.classList.add('active');
-      btnMatrix.classList.remove('active');
-      btnGalaxy.setAttribute('aria-selected', 'true');
-      btnMatrix.setAttribute('aria-selected', 'false');
-      galaxyWrap.style.display = 'block';
-      window.dispatchEvent(new Event('resize'));
-    });
-  }
-
-  private initSkillSearch(): void {
-    const searchInput = document.getElementById('skill-search-input') as HTMLInputElement | null;
-    const clearBtn = document.getElementById('skill-search-clear');
-
-    if (!searchInput) return;
-
-    searchInput.addEventListener('input', () => {
-      this.skillSearchQuery = searchInput.value.trim().toLowerCase();
-      if (clearBtn) {
-        clearBtn.style.display = this.skillSearchQuery ? 'inline-flex' : 'none';
-      }
-      this.renderSkillMatrixGrid();
-    });
-
-    clearBtn?.addEventListener('click', () => {
-      searchInput.value = '';
-      this.skillSearchQuery = '';
-      clearBtn.style.display = 'none';
-      this.renderSkillMatrixGrid();
-      searchInput.focus();
-    });
-  }
-
-  private renderSkillMatrixFilters(): void {
     const filtersContainer = document.getElementById('skill-matrix-filters');
-    if (!filtersContainer) return;
+    const gridContainer = document.getElementById('skill-matrix-grid');
+    if (!gridContainer) return;
 
-    const totalCount = PROFILE_DATA.skills.reduce((acc, cat) => acc + cat.skills.length, 0);
-
-    filtersContainer.innerHTML = `
-      <button class="skill-filter-btn ${this.activeSkillCategory === 'ALL' ? 'active' : ''}" data-category="ALL">
-        <span>All Domains</span>
-        <span class="filter-count">${totalCount}</span>
-      </button>
-      ${PROFILE_DATA.skills
-        .map(
-          (cat) => `
-        <button class="skill-filter-btn ${this.activeSkillCategory === cat.category ? 'active' : ''}" data-category="${cat.category}">
-          <span>${cat.category}</span>
-          <span class="filter-count">${cat.skills.length}</span>
+    // Filters
+    if (filtersContainer) {
+      filtersContainer.innerHTML = `
+        <button class="skill-filter-btn ${this.activeSkillCategory === 'ALL' ? 'active' : ''}" data-category="ALL">
+          <span>All Categories</span>
+          <span class="filter-count">${PROFILE_DATA.skills.reduce((acc, cat) => acc + cat.skills.length, 0)}</span>
         </button>
-      `
-        )
-        .join('')}
-    `;
+        ${PROFILE_DATA.skills
+          .map(
+            (cat) => `
+          <button class="skill-filter-btn ${this.activeSkillCategory === cat.category ? 'active' : ''}" data-category="${cat.category}">
+            <span>${cat.category}</span>
+            <span class="filter-count">${cat.skills.length}</span>
+          </button>
+        `
+          )
+          .join('')}
+      `;
 
-    filtersContainer.querySelectorAll('.skill-filter-btn').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        filtersContainer.querySelectorAll('.skill-filter-btn').forEach((b) => b.classList.remove('active'));
-        btn.classList.add('active');
-        this.activeSkillCategory = btn.getAttribute('data-category') || 'ALL';
-        this.renderSkillMatrixGrid();
+      filtersContainer.querySelectorAll('.skill-filter-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          filtersContainer.querySelectorAll('.skill-filter-btn').forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          this.activeSkillCategory = btn.getAttribute('data-category') || 'ALL';
+          this.renderSkillMatrixGrid();
+        });
       });
-    });
+    }
+
+    this.renderSkillMatrixGrid();
   }
 
   private renderSkillMatrixGrid(): void {
     const gridContainer = document.getElementById('skill-matrix-grid');
     if (!gridContainer) return;
 
-    const categoryColorMap: Record<string, string> = {
-      'UX/UI DESIGN': '#38bdf8',
-      'FRONT-END DEVELOPMENT': '#34d399',
-      'GRAPHIC DESIGN': '#fb923c',
-      'MOTION DESIGN': '#c084fc',
-      'AI × CREATIVE TECH': '#fbbf24',
-      'GEOSPATIAL & ENTERPRISE': '#38bdf8',
-      'DESIGN LEADERSHIP & OPS': '#f43f5e'
-    };
+    const filtered =
+      this.activeSkillCategory === 'ALL'
+        ? PROFILE_DATA.skills
+        : PROFILE_DATA.skills.filter((s) => s.category === this.activeSkillCategory);
 
-    const query = this.skillSearchQuery;
-    const activeCat = this.activeSkillCategory;
-
-    // Filter categories and matching skills
-    const displayCategories = PROFILE_DATA.skills
-      .filter((catGroup) => activeCat === 'ALL' || catGroup.category === activeCat)
-      .map((catGroup) => {
-        const matchingSkills = query
-          ? catGroup.skills.filter((s) => s.toLowerCase().includes(query))
-          : catGroup.skills;
-        return {
-          ...catGroup,
-          skills: matchingSkills,
-          totalSkills: catGroup.skills.length
-        };
-      })
-      .filter((catGroup) => catGroup.skills.length > 0);
-
-    if (displayCategories.length === 0) {
-      gridContainer.innerHTML = `
-        <div class="skills-empty-state">
-          <span class="empty-icon">⌕</span>
-          <h4>No competencies match "${query}"</h4>
-          <p>Try searching for Figma, CSS, Motion, GIS, AI, or clear your query.</p>
-          <button type="button" class="btn-clear-search-action" id="btn-reset-skill-query">Reset Search</button>
-        </div>
-      `;
-
-      document.getElementById('btn-reset-skill-query')?.addEventListener('click', () => {
-        const input = document.getElementById('skill-search-input') as HTMLInputElement | null;
-        if (input) input.value = '';
-        this.skillSearchQuery = '';
-        const clearBtn = document.getElementById('skill-search-clear');
-        if (clearBtn) clearBtn.style.display = 'none';
-        this.renderSkillMatrixGrid();
-      });
-      return;
-    }
-
-    gridContainer.innerHTML = displayCategories
-      .map((cat) => {
-        const accent = categoryColorMap[cat.category] || '#38bdf8';
-        return `
-          <div class="skill-category-group" style="--cat-accent: ${accent};">
-            <div class="category-header">
-              <span class="cat-icon" style="color: ${accent}; border-color: ${accent}40; background: ${accent}15;">
-                ${getCategoryIcon(cat.category)}
-              </span>
-              <div class="cat-header-info">
-                <h4 class="cat-title">${cat.category}</h4>
-                <span class="cat-count-badge">${cat.skills.length} ${cat.skills.length === 1 ? 'competency' : 'competencies'}</span>
-              </div>
-            </div>
-
-            <div class="skills-pill-cloud">
-              ${cat.skills
-                .map((skill) => {
-                  let highlightedSkill = skill;
-                  if (query) {
-                    const regex = new RegExp(`(${query})`, 'gi');
-                    highlightedSkill = skill.replace(regex, '<mark class="skill-query-match">$1</mark>');
-                  }
-
-                  return `
-                    <div class="skill-matrix-pill" role="button" tabindex="0" title="${skill} · ${cat.category}">
-                      <span class="skill-dot" style="background: ${accent};"></span>
-                      <span class="skill-text">${highlightedSkill}</span>
-                    </div>
-                  `;
-                })
-                .join('')}
-            </div>
+    gridContainer.innerHTML = filtered
+      .map(
+        (cat) => `
+        <div class="skill-category-group">
+          <div class="category-header">
+            <span class="cat-icon">${getCategoryIcon(cat.category)}</span>
+            <h4 class="cat-title">${cat.category}</h4>
+            <span class="cat-count-badge">${cat.skills.length} competencies</span>
           </div>
-        `;
-      })
+
+          <div class="skills-pill-cloud">
+            ${cat.skills
+              .map(
+                (skill) => `
+              <div class="skill-matrix-pill">
+                <span class="skill-dot"></span>
+                <span class="skill-text">${skill}</span>
+              </div>
+            `
+              )
+              .join('')}
+          </div>
+        </div>
+      `
+      )
       .join('');
   }
 

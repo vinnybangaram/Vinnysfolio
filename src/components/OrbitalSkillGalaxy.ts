@@ -35,8 +35,14 @@ export class OrbitalSkillGalaxy {
     'GRAPHIC DESIGN': '#fb923c',
     'MOTION DESIGN': '#c084fc',
     'AI × CREATIVE TECH': '#fbbf24',
-    'GEOSPATIAL & ENTERPRISE': '#38bdf8',
-    'DESIGN LEADERSHIP & OPS': '#f43f5e'
+    'GEOSPATIAL & ENTERPRISE': '#06b6d4',
+    'DESIGN LEADERSHIP & OPS': '#94a3b8',
+    // Fallback legacy keys
+    'UI & UX DESIGN': '#38bdf8',
+    'MOTION & INTERACTION': '#c084fc',
+    'FRONT-END & CREATIVE TECH': '#34d399',
+    'AI & FRONTIER WORKFLOWS': '#fbbf24',
+    'GEOSPATIAL & PRODUCT SYSTEMS': '#06b6d4'
   };
 
   constructor(canvasId: string) {
@@ -55,18 +61,18 @@ export class OrbitalSkillGalaxy {
     this.animate();
   }
 
-  public resize(): void {
+  private resize(): void {
     if (!this.canvas) return;
     const parent = this.canvas.parentElement;
     if (!parent) return;
     this.canvas.width = parent.clientWidth || 800;
-    this.canvas.height = Math.max(340, Math.min(420, parent.clientHeight || 360));
+    this.canvas.height = 480;
   }
 
   private buildNodes(): void {
     this.nodes = [];
     const categories = PROFILE_DATA.skills;
-    const ringRadii = [60, 100, 140, 180, 220, 260, 300];
+    const ringRadii = [60, 110, 160, 210, 250, 280];
 
     categories.forEach((catGroup, catIdx) => {
       const radius = ringRadii[catIdx % ringRadii.length] || 150;
@@ -164,7 +170,7 @@ export class OrbitalSkillGalaxy {
     ctx.translate(cx, cy);
 
     // Orbital Ellipse Guide Rings
-    const ringRadii = [60, 100, 140, 180, 220, 260, 300];
+    const ringRadii = [60, 110, 160, 210, 250, 280];
     ringRadii.forEach((r, idx) => {
       ctx.beginPath();
       ctx.ellipse(0, 0, r, r * 0.45, this.tilt.y, 0, Math.PI * 2);

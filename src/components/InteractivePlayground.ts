@@ -7,7 +7,6 @@ export class InteractivePlayground {
 
   public init(): void {
     // 1. Disciplines Micro-Sandboxes
-    this.initUxUiSubtabs();
     this.initTokenWorkbench();
     this.initFrontendWorkbench();
     this.initMotionPlayground();
@@ -29,31 +28,62 @@ export class InteractivePlayground {
   }
 
   // -------------------------------------------------------------
-  // 0. UX/UI SUBTABS & FRONTEND WORKBENCH
+  // 1. TOKEN WORKBENCH (Discipline 03: UI Design & Systems)
   // -------------------------------------------------------------
-  private initUxUiSubtabs(): void {
-    const tabTokens = document.getElementById('tab-uxui-tokens');
-    const tabFlow = document.getElementById('tab-uxui-flow');
-    const panelTokens = document.getElementById('panel-uxui-tokens');
-    const panelFlow = document.getElementById('panel-uxui-flow');
+  private initTokenWorkbench(): void {
+    const card = document.getElementById('token-preview-card');
+    const blurSlider = document.getElementById('token-slider-blur') as HTMLInputElement | null;
+    const radiusSlider = document.getElementById('token-slider-radius') as HTMLInputElement | null;
+    const depthSlider = document.getElementById('token-slider-depth') as HTMLInputElement | null;
+    const codeOut = document.getElementById('token-code-output');
+    const hueBtns = document.querySelectorAll('.token-hue-dot');
 
-    if (!tabTokens || !tabFlow || !panelTokens || !panelFlow) return;
+    if (!card) return;
 
-    tabTokens.addEventListener('click', () => {
-      tabTokens.classList.add('active');
-      tabFlow.classList.remove('active');
-      panelTokens.style.display = 'block';
-      panelFlow.style.display = 'none';
+    let currentHue = '#38bdf8';
+
+    const updateTokens = () => {
+      const blur = blurSlider ? blurSlider.value : '20';
+      const radius = radiusSlider ? radiusSlider.value : '16';
+      const depth = depthSlider ? depthSlider.value : '2';
+
+      card.style.setProperty('--card-blur', `${blur}px`);
+      card.style.setProperty('--card-radius', `${radius}px`);
+      card.style.setProperty('--card-accent', currentHue);
+      card.style.setProperty('--card-shadow-scale', depth);
+
+      const blurVal = document.getElementById('val-blur');
+      const radiusVal = document.getElementById('val-radius');
+      const depthVal = document.getElementById('val-depth');
+      if (blurVal) blurVal.textContent = `${blur}px`;
+      if (radiusVal) radiusVal.textContent = `${radius}px`;
+      if (depthVal) depthVal.textContent = `L${depth}`;
+
+      if (codeOut) {
+        codeOut.innerHTML = `<code>--glass-blur: ${blur}px; --radius: ${radius}px; --accent: ${currentHue};</code>`;
+      }
+    };
+
+    blurSlider?.addEventListener('input', updateTokens);
+    radiusSlider?.addEventListener('input', updateTokens);
+    depthSlider?.addEventListener('input', updateTokens);
+
+    hueBtns.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        const target = e.currentTarget as HTMLElement;
+        hueBtns.forEach((b) => b.classList.remove('active'));
+        target.classList.add('active');
+        currentHue = target.getAttribute('data-hue') || '#38bdf8';
+        updateTokens();
+      });
     });
 
-    tabFlow.addEventListener('click', () => {
-      tabFlow.classList.add('active');
-      tabTokens.classList.remove('active');
-      panelFlow.style.display = 'block';
-      panelTokens.style.display = 'none';
-    });
+    updateTokens();
   }
 
+  // -------------------------------------------------------------
+  // 1B. FRONTEND WORKBENCH (Discipline 02: Front-End Code)
+  // -------------------------------------------------------------
   private initFrontendWorkbench(): void {
     const stage = document.getElementById('frontend-preview-stage');
     const codeOut = document.getElementById('frontend-code-output');
@@ -112,60 +142,6 @@ export class InteractivePlayground {
     });
 
     updateStage();
-  }
-
-  // -------------------------------------------------------------
-  // 1. TOKEN WORKBENCH (Discipline 03: UI Design & Systems)
-  // -------------------------------------------------------------
-  private initTokenWorkbench(): void {
-    const card = document.getElementById('token-preview-card');
-    const blurSlider = document.getElementById('token-slider-blur') as HTMLInputElement | null;
-    const radiusSlider = document.getElementById('token-slider-radius') as HTMLInputElement | null;
-    const depthSlider = document.getElementById('token-slider-depth') as HTMLInputElement | null;
-    const codeOut = document.getElementById('token-code-output');
-    const hueBtns = document.querySelectorAll('.token-hue-dot');
-
-    if (!card) return;
-
-    let currentHue = '#38bdf8';
-
-    const updateTokens = () => {
-      const blur = blurSlider ? blurSlider.value : '20';
-      const radius = radiusSlider ? radiusSlider.value : '16';
-      const depth = depthSlider ? depthSlider.value : '2';
-
-      card.style.setProperty('--card-blur', `${blur}px`);
-      card.style.setProperty('--card-radius', `${radius}px`);
-      card.style.setProperty('--card-accent', currentHue);
-      card.style.setProperty('--card-shadow-scale', depth);
-
-      const blurVal = document.getElementById('val-blur');
-      const radiusVal = document.getElementById('val-radius');
-      const depthVal = document.getElementById('val-depth');
-      if (blurVal) blurVal.textContent = `${blur}px`;
-      if (radiusVal) radiusVal.textContent = `${radius}px`;
-      if (depthVal) depthVal.textContent = `L${depth}`;
-
-      if (codeOut) {
-        codeOut.innerHTML = `<code>--glass-blur: ${blur}px; --radius: ${radius}px; --accent: ${currentHue};</code>`;
-      }
-    };
-
-    blurSlider?.addEventListener('input', updateTokens);
-    radiusSlider?.addEventListener('input', updateTokens);
-    depthSlider?.addEventListener('input', updateTokens);
-
-    hueBtns.forEach((btn) => {
-      btn.addEventListener('click', (e) => {
-        const target = e.currentTarget as HTMLElement;
-        hueBtns.forEach((b) => b.classList.remove('active'));
-        target.classList.add('active');
-        currentHue = target.getAttribute('data-hue') || '#38bdf8';
-        updateTokens();
-      });
-    });
-
-    updateTokens();
   }
 
   // -------------------------------------------------------------

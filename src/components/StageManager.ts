@@ -21,10 +21,55 @@ export class StageManager {
   }
 
   private populateStageVisuals(): void {
-    // Stage 1: Graphic Design Visuals
+    // Stage 1: UX/UI Design Visuals (Flow & Systems)
     const s1Visual = document.getElementById('stage-1-visuals');
     if (s1Visual) {
       s1Visual.innerHTML = `
+        <div class="ux-flow-network">
+          <div class="ux-node"><span class="node-dot"></span><span>INTENT</span></div>
+          <div class="ux-connector"></div>
+          <div class="ux-node"><span class="node-dot"></span><span>SPATIAL</span></div>
+          <div class="ux-connector"></div>
+          <div class="ux-node central"><span class="node-dot"></span><span>DESIGN SYSTEM</span></div>
+          <div class="ux-connector"></div>
+          <div class="ux-node"><span class="node-dot"></span><span>INTERACT</span></div>
+          <div class="ux-connector"></div>
+          <div class="ux-node"><span class="node-dot"></span><span>ACTION</span></div>
+        </div>
+      `;
+    }
+
+    // Stage 2: Front-End Development (HTML5, Modern CSS & Component Architecture)
+    const s2Visual = document.getElementById('stage-2-visuals');
+    if (s2Visual) {
+      s2Visual.innerHTML = `
+        <div class="ui-components-preview">
+          <div class="ui-card-mock">
+            <div class="ui-card-header">
+              <span class="ui-token-code">display: flex; gap: 12px;</span>
+              <span class="ui-token-code">HTML5 / CSS3</span>
+            </div>
+            <div style="font-weight:600; font-size: 0.9rem; margin-bottom: 6px;">Semantic DOM & Component Architecture</div>
+            <div style="font-size: 0.8rem; color: #94a3b8;">Zero-dependency, accessible responsive layouts translating Figma to production code.</div>
+            <button class="ui-btn-sample" style="background: linear-gradient(135deg, #10b981, #059669);">&lt;Component /&gt;</button>
+          </div>
+          <div class="ui-card-mock">
+            <div class="ui-card-header">
+              <span class="ui-token-code">tokens.radius.lg // 16px</span>
+              <span class="ui-token-code">60 FPS</span>
+            </div>
+            <div style="font-weight:600; font-size: 0.9rem; margin-bottom: 6px;">Living Token Pipeline</div>
+            <div style="font-size: 0.8rem; color: #94a3b8;">Multi-tenant CSS custom properties syncing design with engineering.</div>
+            <button class="ui-btn-sample">Inspect Tokens</button>
+          </div>
+        </div>
+      `;
+    }
+
+    // Stage 3: Graphic Design (Grids & Baseline)
+    const s3Visual = document.getElementById('stage-3-visuals');
+    if (s3Visual) {
+      s3Visual.innerHTML = `
         <div class="graphic-grid-system">
           <div class="graphic-module">
             <span class="crop-mark crop-tl"></span>
@@ -32,7 +77,7 @@ export class StageManager {
             <span class="crop-mark crop-bl"></span>
             <span class="crop-mark crop-br"></span>
             <span class="module-tag">GRID // 01</span>
-            <div class="module-title">Golden Ratio Ratio (1:1.618)</div>
+            <div class="module-title">Golden Ratio (1:1.618)</div>
           </div>
           <div class="graphic-module">
             <span class="crop-mark crop-tl"></span>
@@ -62,53 +107,6 @@ export class StageManager {
       `;
     }
 
-    // Stage 2: UX Design Flow Network
-    const s2Visual = document.getElementById('stage-2-visuals');
-    if (s2Visual) {
-      s2Visual.innerHTML = `
-        <div class="ux-flow-network">
-          <div class="ux-node"><span class="node-dot"></span><span>NEED</span></div>
-          <div class="ux-connector"></div>
-          <div class="ux-node"><span class="node-dot"></span><span>GOAL</span></div>
-          <div class="ux-connector"></div>
-          <div class="ux-node central"><span class="node-dot"></span><span>USER CORE</span></div>
-          <div class="ux-connector"></div>
-          <div class="ux-node"><span class="node-dot"></span><span>INTERACT</span></div>
-          <div class="ux-connector"></div>
-          <div class="ux-node"><span class="node-dot"></span><span>DECIDE</span></div>
-          <div class="ux-connector"></div>
-          <div class="ux-node"><span class="node-dot"></span><span>OUTCOME</span></div>
-        </div>
-      `;
-    }
-
-    // Stage 3: UI Design Component Tokens
-    const s3Visual = document.getElementById('stage-3-visuals');
-    if (s3Visual) {
-      s3Visual.innerHTML = `
-        <div class="ui-components-preview">
-          <div class="ui-card-mock">
-            <div class="ui-card-header">
-              <span class="ui-token-code">tokens.radius.lg // 16px</span>
-              <span class="ui-token-code">display: grid</span>
-            </div>
-            <div style="font-weight:600; font-size: 0.9rem; margin-bottom: 6px;">Spatial GIS Telemetry Card</div>
-            <div style="font-size: 0.8rem; color: #94a3b8;">High-density component adhering to WCAG AAA contrast guidelines.</div>
-            <button class="ui-btn-sample">Inspect Layer</button>
-          </div>
-          <div class="ui-card-mock">
-            <div class="ui-card-header">
-              <span class="ui-token-code">gap: 1.5rem</span>
-              <span class="ui-token-code">backdrop-filter: blur</span>
-            </div>
-            <div style="font-weight:600; font-size: 0.9rem; margin-bottom: 6px;">Enterprise Token Pipeline</div>
-            <div style="font-size: 0.8rem; color: #94a3b8;">Syncing multi-tenant tokens between design and production code.</div>
-            <button class="ui-btn-sample" style="background: linear-gradient(135deg, #10b981, #059669);">Active State</button>
-          </div>
-        </div>
-      `;
-    }
-
     // Stage 4: Motion Graphics Bézier Curve
     const s4Visual = document.getElementById('stage-4-visuals');
     if (s4Visual) {
@@ -130,11 +128,11 @@ export class StageManager {
     if (s5Visual) {
       s5Visual.innerHTML = `
         <div class="ai-constellation">
+          <div class="ai-pillar">UX/UI Systems</div>
+          <span class="ai-synergy-icon">✦</span>
+          <div class="ai-pillar">Front-End Code</div>
+          <span class="ai-synergy-icon">✦</span>
           <div class="ai-pillar">Graphic Form</div>
-          <span class="ai-synergy-icon">✦</span>
-          <div class="ai-pillar">UX Systems</div>
-          <span class="ai-synergy-icon">✦</span>
-          <div class="ai-pillar">UI Tokens</div>
           <span class="ai-synergy-icon">✦</span>
           <div class="ai-pillar">Kinetic Motion</div>
           <span class="ai-synergy-icon">=</span>
@@ -152,19 +150,19 @@ export class StageManager {
 
     if (progress >= 0.05 && progress < 0.22) {
       activeIndex = 0;
-      label = 'STAGE 01: GRAPHIC DESIGN';
+      label = 'STAGE 01: UX/UI DESIGN';
     } else if (progress >= 0.22 && progress < 0.42) {
       activeIndex = 1;
-      label = 'STAGE 02: UX DESIGN';
+      label = 'STAGE 02: FRONT-END DEVELOPMENT';
     } else if (progress >= 0.42 && progress < 0.62) {
       activeIndex = 2;
-      label = 'STAGE 03: UI / HTML / CSS';
+      label = 'STAGE 03: GRAPHIC DESIGN';
     } else if (progress >= 0.62 && progress < 0.82) {
       activeIndex = 3;
-      label = 'STAGE 04: MOTION GRAPHICS';
+      label = 'STAGE 04: MOTION DESIGN';
     } else if (progress >= 0.82 && progress < 0.94) {
       activeIndex = 4;
-      label = 'STAGE 05: AI CONVERGENCE';
+      label = 'STAGE 05: AI × CREATIVE TECH';
     } else if (progress >= 0.94) {
       activeIndex = 5;
       label = 'VINODH KUMAR — DESIGN INTELLIGENCE';

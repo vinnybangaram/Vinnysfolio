@@ -22,6 +22,21 @@ export default defineConfig({
   },
   plugins: [
     {
+      name: 'copy-me-frames-to-dist',
+      closeBundle() {
+        const srcDir = path.resolve(__dirname, 'Me');
+        const destDir = path.resolve(__dirname, 'dist', 'frames');
+        if (fs.existsSync(srcDir)) {
+          console.log('[build] Copying frames from Me to dist/frames for deployment...');
+          if (!fs.existsSync(destDir)) {
+            fs.mkdirSync(destDir, { recursive: true });
+          }
+          fs.cpSync(srcDir, destDir, { recursive: true });
+          console.log('[build] Successfully populated dist/frames.');
+        }
+      }
+    },
+    {
       name: 'serve-me-frames',
       configureServer(server) {
         server.middlewares.use('/frames', (req, res, next) => {

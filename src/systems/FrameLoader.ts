@@ -15,6 +15,7 @@ export class FrameLoader {
 
   private imageCache: Map<number, HTMLImageElement> = new Map();
   private loadingSet: Set<number> = new Set();
+  private failedSet: Set<number> = new Set();
   private loadedCount: number = 0;
   private isInitialReady: boolean = false;
   private maxCacheSize: number = 90; // Sliding window size to keep RAM < 70MB
@@ -48,35 +49,50 @@ export class FrameLoader {
     if (!initialKeyframes.includes(0)) initialKeyframes.unshift(0);
     if (!initialKeyframes.includes(this.totalFrames - 1)) initialKeyframes.push(this.totalFrames - 1);
 
-    let keyframesLoaded = 0;
+    let keyframesAttempted = 0;
     const totalKeyframes = initialKeyframes.length;
+
+    // Safety timeout: NEVER leave the user permanently stuck on splash screen
+    setTimeout(() => {
+      if (!this.isInitialReady) {
+        this.isInitialReady = true;
+        if (this.onProgress) {
+          this.onProgress(totalKeyframes, totalKeyframes, 100);
+        }
+        if (this.onReady) this.onReady();
+      }
+    }, 2500);
 
     // Load Phase 1 keyframes with high concurrency
     initialKeyframes.forEach((frameIdx) => {
       this.loadSingleFrame(frameIdx, () => {
-        keyframesLoaded++;
-        const percent = Math.min(100, Math.round((keyframesLoaded / totalKeyframes) * 100));
+        keyframesAttempted++;
+        const percent = Math.min(100, Math.round((keyframesAttempted / totalKeyframes) * 100));
         
         if (this.onProgress) {
-          this.onProgress(keyframesLoaded, totalKeyframes, percent);
+          this.onProgress(keyframesAttempted, totalKeyframes, percent);
         }
 
-        if (keyframesLoaded >= Math.min(15, totalKeyframes) && !this.isInitialReady) {
+        if (keyframesAttempted >= Math.min(10, totalKeyframes) && !this.isInitialReady) {
           this.isInitialReady = true;
           if (this.onReady) this.onReady();
         }
 
         // Once initial keyframes finish, start background idle stream
-        if (keyframesLoaded === totalKeyframes) {
+        if (keyframesAttempted === totalKeyframes) {
           this.loadRemainingBackground();
         }
       });
     });
   }
 
-  private loadSingleFrame(index: number, callback?: (img: HTMLImageElement) => void): void {
+  private loadSingleFrame(index: number, callback?: (img: HTMLImageElement | null) => void): void {
     if (this.imageCache.has(index)) {
       if (callback) callback(this.imageCache.get(index)!);
+      return;
+    }
+    if (this.failedSet.has(index)) {
+      if (callback) callback(null);
       return;
     }
     if (this.loadingSet.has(index)) return;
@@ -94,7 +110,8 @@ export class FrameLoader {
 
     img.onerror = () => {
       this.loadingSet.delete(index);
-      // Fallback silent fail
+      this.failedSet.add(index);
+      if (callback) callback(null);
     };
 
     img.src = this.getFrameUrl(index);
@@ -142,14 +159,14 @@ export class FrameLoader {
    * Prioritize loading frames surrounding the user's active playhead
    */
   public prefetchProximity(currentIndex: number): void {
-    const radius = 15;
+    const radius = 10;
     for (let offset = 1; offset <= radius; offset++) {
       const next = currentIndex + offset;
       const prev = currentIndex - offset;
-      if (next < this.totalFrames && !this.imageCache.has(next)) {
+      if (next < this.totalFrames && !this.imageCache.has(next) && !this.failedSet.has(next)) {
         this.loadSingleFrame(next);
       }
-      if (prev >= 0 && !this.imageCache.has(prev)) {
+      if (prev >= 0 && !this.imageCache.has(prev) && !this.failedSet.has(prev)) {
         this.loadSingleFrame(prev);
       }
     }
@@ -172,7 +189,7 @@ export class FrameLoader {
         clearInterval(interval);
         return;
       }
-      if (!this.imageCache.has(index)) {
+      if (!this.imageCache.has(index) && !this.failedSet.has(index)) {
         this.loadSingleFrame(index);
       }
       index++;
