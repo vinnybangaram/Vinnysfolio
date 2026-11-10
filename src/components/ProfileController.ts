@@ -1,9 +1,121 @@
 import { PROFILE_DATA } from '../data/profileData';
 import { BRAND_ICONS, getToolIcon, getCategoryIcon } from '../utils/icons';
 
+const CATEGORY_ACCENTS: Record<string, string> = {
+  'UX/UI DESIGN': '#38bdf8',
+  'FRONT-END DEVELOPMENT': '#34d399',
+  'GRAPHIC DESIGN': '#fb923c',
+  'MOTION DESIGN': '#c084fc',
+  'AI × CREATIVE TECH': '#fbbf24',
+  'GEOSPATIAL & ENTERPRISE': '#06b6d4',
+  'DESIGN LEADERSHIP & OPS': '#94a3b8'
+};
+
+const TOOL_GROUP_COLORS: Record<string, string> = {
+  'DESIGN & PROTOTYPING': '#c084fc',
+  'AI & FRONTIER MODELS': '#fbbf24',
+  'WEB & CREATIVE CODE': '#34d399',
+  'MOTION & VIDEO': '#f43f5e',
+  'ENTERPRISE & SPATIAL': '#38bdf8'
+};
+
+function getToolBrandColor(toolName: string): string {
+  const t = toolName.toLowerCase();
+  if (t.includes('figma')) return '#a259ff';
+  if (t.includes('photoshop')) return '#31a8ff';
+  if (t.includes('illustrator')) return '#ff9a00';
+  if (t.includes('after effects')) return '#9999ff';
+  if (t.includes('premiere')) return '#ea77ff';
+  if (t.includes('claude')) return '#d97706';
+  if (t.includes('chatgpt') || t.includes('openai')) return '#10a37f';
+  if (t.includes('gemini')) return '#4285f4';
+  if (t.includes('three.js') || t.includes('webgl')) return '#38bdf8';
+  if (t.includes('html5')) return '#e34f26';
+  if (t.includes('css3') || t.includes('css')) return '#1572b6';
+  if (t.includes('typescript')) return '#3178c6';
+  if (t.includes('javascript')) return '#f7df1e';
+  if (t.includes('react')) return '#61dafb';
+  if (t.includes('github')) return '#f0f6fc';
+  if (t.includes('vercel')) return '#ffffff';
+  if (t.includes('vite')) return '#bd34fe';
+  if (t.includes('midjourney') || t.includes('flux')) return '#c084fc';
+  return '#38bdf8';
+}
+
+function getDisciplineWatermark(id: string): string {
+  switch (id) {
+    case 'ux-ui-design':
+      return `
+        <svg class="discipline-watermark-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="10" width="100" height="100" rx="16" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4"/>
+          <circle cx="35" cy="40" r="14" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="85" cy="40" r="14" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M35 54v25h50V54" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="60" cy="79" r="12" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+      `;
+    case 'front-end':
+      return `
+        <svg class="discipline-watermark-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 35L45 60L20 85" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M100 35L75 60L100 85" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="68" y1="25" x2="52" y2="95" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <rect x="35" y="48" width="50" height="24" rx="4" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2"/>
+        </svg>
+      `;
+    case 'graphic-design':
+      return `
+        <svg class="discipline-watermark-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="60" cy="60" r="48" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4"/>
+          <rect x="25" y="25" width="70" height="70" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M25 95A70 70 0 0 1 95 25" stroke="currentColor" stroke-width="2"/>
+          <circle cx="60" cy="60" r="4" fill="currentColor"/>
+        </svg>
+      `;
+    case 'motion-design':
+      return `
+        <svg class="discipline-watermark-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 95C30 95 40 25 60 25C80 25 90 95 110 95" stroke="currentColor" stroke-width="2"/>
+          <line x1="30" y1="95" x2="40" y2="25" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2"/>
+          <line x1="80" y1="25" x2="90" y2="95" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2"/>
+          <circle cx="40" cy="25" r="4" fill="currentColor"/>
+          <circle cx="80" cy="25" r="4" fill="currentColor"/>
+        </svg>
+      `;
+    case 'ai-design':
+    default:
+      return `
+        <svg class="discipline-watermark-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="60,15 100,38 100,82 60,105 20,82 20,38" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="60" cy="60" r="16" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="60" y1="15" x2="60" y2="44" stroke="currentColor" stroke-width="1"/>
+          <line x1="100" y1="82" x2="74" y2="68" stroke="currentColor" stroke-width="1"/>
+          <line x1="20" y1="82" x2="46" y2="68" stroke="currentColor" stroke-width="1"/>
+        </svg>
+      `;
+  }
+}
+
+function getSkillTierBadge(skill: string): string {
+  const s = skill.toUpperCase();
+  if (s.includes('SYSTEM') || s.includes('TOKEN')) return 'SYSTEMS';
+  if (s.includes('CODE') || s.includes('CSS') || s.includes('HTML') || s.includes('SCRIPT')) return 'PROD';
+  if (s.includes('60FPS') || s.includes('PERFORMANCE') || s.includes('OPTIMIZATION')) return '60FPS';
+  if (s.includes('ENTERPRISE') || s.includes('DASHBOARD') || s.includes('TELEMATICS')) return 'ENTERPRISE';
+  if (s.includes('LEAD') || s.includes('MENTOR') || s.includes('GOVERNANCE') || s.includes('OPS')) return 'LEAD';
+  if (s.includes('GPU') || s.includes('INFERENCE') || s.includes('SYNTHESIS') || s.includes('AI') || s.includes('PROMPT')) return 'AI/OPS';
+  if (s.includes('GIS') || s.includes('MAP') || s.includes('SPATIAL') || s.includes('GEOFENCING')) return 'SPATIAL';
+  if (s.includes('ACCESSIBILITY') || s.includes('WCAG')) return 'WCAG';
+  if (s.includes('MOTION') || s.includes('EASING') || s.includes('PHYSICS') || s.includes('BÉZIER')) return 'KINETIC';
+  if (s.includes('GRID') || s.includes('TYPO') || s.includes('RATIO') || s.includes('BRAND')) return 'CRAFT';
+  if (s.includes('PROTOTYP') || s.includes('WIREFRAM')) return 'ARCH';
+  return 'CORE';
+}
+
 export class ProfileController {
   private activeSkillCategory: string = 'ALL';
   private activeArticleCategory: string = 'ALL';
+  private skillSearchQuery: string = '';
 
   constructor() {
     this.init();
@@ -28,44 +140,7 @@ export class ProfileController {
     container.innerHTML = PROFILE_DATA.disciplines
       .map((d) => {
         let sandboxMarkup = '';
-        if (d.id === 'graphic-design') {
-          sandboxMarkup = `
-            <div class="discipline-sandbox graphic-sandbox">
-              <div class="sandbox-header">
-                <span class="sandbox-tag">TYPOGRAPHY & RATIO LAB</span>
-                <button type="button" class="sandbox-btn" id="toggle-phi-guide">φ 1.618 Grid</button>
-              </div>
-              <div class="grid-controls-row">
-                <span class="ctrl-label">Columns: <strong id="val-cols">6 cols</strong></span>
-                <input type="range" id="grid-slider-cols" min="4" max="12" value="6" class="mini-slider" />
-              </div>
-              <div class="grid-demo-columns" id="grid-demo-columns"></div>
-            </div>
-          `;
-        } else if (d.id === 'ux-design') {
-          sandboxMarkup = `
-            <div class="discipline-sandbox ux-sandbox">
-              <div class="sandbox-header">
-                <span class="sandbox-tag">INTERACTIVE FLOW TELEMETRY</span>
-                <span class="sandbox-status">● LIVE PIPELINE</span>
-              </div>
-              <div class="journey-flow-nodes">
-                <button type="button" class="journey-flow-node active" data-node="intent">01 Intent</button>
-                <span class="flow-arrow">→</span>
-                <button type="button" class="journey-flow-node" data-node="spatial">02 Spatial</button>
-                <span class="flow-arrow">→</span>
-                <button type="button" class="journey-flow-node" data-node="cognition">03 Cognition</button>
-                <span class="flow-arrow">→</span>
-                <button type="button" class="journey-flow-node" data-node="decision">04 Action</button>
-              </div>
-              <div class="journey-readout-box">
-                <h5 id="journey-readout-title">01 // INTENT DETECTION & CONTEXT</h5>
-                <p id="journey-readout-desc">Capturing real-time operator queries, telemetry triggers, or map interactions without cognitive friction.</p>
-                <span class="journey-metric" id="journey-readout-metric">LATENCY: &lt;8ms · RECOG: 99.4%</span>
-              </div>
-            </div>
-          `;
-        } else if (d.id === 'ui-design') {
+        if (d.id === 'ux-ui-design' || d.id === 'ui-design' || d.id === 'ux-design') {
           sandboxMarkup = `
             <div class="discipline-sandbox ui-sandbox">
               <div class="sandbox-header">
@@ -83,7 +158,7 @@ export class ProfileController {
                   <span class="token-dot-live"></span>
                 </div>
                 <div class="token-code-preview" id="token-code-output">
-                  <code>--glass-blur: 20px; --radius: 16px;</code>
+                  <code>--accent: #38bdf8; --blur: 20px; --radius: 16px;</code>
                 </div>
               </div>
               <div class="token-controls-grid">
@@ -96,6 +171,51 @@ export class ProfileController {
                   <input type="range" id="token-slider-radius" min="0" max="32" value="16" class="mini-slider" />
                 </div>
               </div>
+            </div>
+          `;
+        } else if (d.id === 'front-end') {
+          sandboxMarkup = `
+            <div class="discipline-sandbox fe-sandbox">
+              <div class="sandbox-header">
+                <span class="sandbox-tag">CSS LAYOUT ENGINE</span>
+                <div class="fe-mode-toggle">
+                  <button type="button" class="fe-mode-btn active" data-mode="flex">Flexbox</button>
+                  <button type="button" class="fe-mode-btn" data-mode="grid">Grid</button>
+                </div>
+              </div>
+              <div class="fe-preview-stage" id="frontend-preview-stage">
+                <div class="fe-stage-item item-1"><span>01</span></div>
+                <div class="fe-stage-item item-2"><span>02</span></div>
+                <div class="fe-stage-item item-3"><span>03</span></div>
+              </div>
+              <div class="fe-controls-row">
+                <div class="fe-justify-options">
+                  <button type="button" class="fe-justify-btn active" data-justify="space-between">between</button>
+                  <button type="button" class="fe-justify-btn" data-justify="center">center</button>
+                  <button type="button" class="fe-justify-btn" data-justify="flex-start">start</button>
+                </div>
+                <div class="fe-slider-wrap">
+                  <span class="ctrl-label">Gap: <strong id="val-fe-gap">12px</strong></span>
+                  <input type="range" id="fe-slider-gap" min="4" max="28" value="12" class="mini-slider" />
+                </div>
+              </div>
+              <div class="token-code-preview" id="frontend-code-output">
+                <code>display: flex; justify-content: space-between; gap: 12px;</code>
+              </div>
+            </div>
+          `;
+        } else if (d.id === 'graphic-design') {
+          sandboxMarkup = `
+            <div class="discipline-sandbox graphic-sandbox">
+              <div class="sandbox-header">
+                <span class="sandbox-tag">TYPOGRAPHY & RATIO LAB</span>
+                <button type="button" class="sandbox-btn" id="toggle-phi-guide">φ 1.618 Grid</button>
+              </div>
+              <div class="grid-controls-row">
+                <span class="ctrl-label">Columns: <strong id="val-cols">6 cols</strong></span>
+                <input type="range" id="grid-slider-cols" min="4" max="12" value="6" class="mini-slider" />
+              </div>
+              <div class="grid-demo-columns" id="grid-demo-columns"></div>
             </div>
           `;
         } else if (d.id === 'motion-design') {
@@ -138,6 +258,7 @@ export class ProfileController {
 
         return `
           <div class="discipline-card" data-discipline="${d.id}" style="--disc-accent: ${d.accent};">
+            ${getDisciplineWatermark(d.id)}
             <div class="discipline-card-header">
               <div class="discipline-badge">${d.badge}</div>
             </div>
@@ -166,11 +287,55 @@ export class ProfileController {
     const gridContainer = document.getElementById('skill-matrix-grid');
     if (!gridContainer) return;
 
+    // Search and view switcher listeners
+    const searchInput = document.getElementById('skill-search-input') as HTMLInputElement | null;
+    const searchClear = document.getElementById('skill-search-clear');
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        this.skillSearchQuery = searchInput.value.trim().toLowerCase();
+        if (searchClear) {
+          searchClear.style.display = this.skillSearchQuery ? 'inline-flex' : 'none';
+        }
+        this.renderSkillMatrixGrid();
+      });
+    }
+
+    if (searchClear && searchInput) {
+      searchClear.addEventListener('click', () => {
+        searchInput.value = '';
+        this.skillSearchQuery = '';
+        searchClear.style.display = 'none';
+        searchInput.focus();
+        this.renderSkillMatrixGrid();
+      });
+    }
+
+    const btnMatrix = document.getElementById('btn-view-matrix');
+    const btnGalaxy = document.getElementById('btn-view-galaxy');
+    const galaxyWrapper = document.getElementById('orbital-galaxy-wrapper');
+
+    if (btnMatrix && btnGalaxy) {
+      btnMatrix.addEventListener('click', () => {
+        btnMatrix.classList.add('active');
+        btnGalaxy.classList.remove('active');
+        if (galaxyWrapper) galaxyWrapper.style.display = 'none';
+      });
+
+      btnGalaxy.addEventListener('click', () => {
+        btnGalaxy.classList.add('active');
+        btnMatrix.classList.remove('active');
+        if (galaxyWrapper) {
+          galaxyWrapper.style.display = 'block';
+          window.dispatchEvent(new Event('resize'));
+        }
+      });
+    }
+
     // Filters
     if (filtersContainer) {
       filtersContainer.innerHTML = `
         <button class="skill-filter-btn ${this.activeSkillCategory === 'ALL' ? 'active' : ''}" data-category="ALL">
-          <span>All Categories</span>
+          <span>All Domains</span>
           <span class="filter-count">${PROFILE_DATA.skills.reduce((acc, cat) => acc + cat.skills.length, 0)}</span>
         </button>
         ${PROFILE_DATA.skills
@@ -202,36 +367,73 @@ export class ProfileController {
     const gridContainer = document.getElementById('skill-matrix-grid');
     if (!gridContainer) return;
 
-    const filtered =
-      this.activeSkillCategory === 'ALL'
-        ? PROFILE_DATA.skills
-        : PROFILE_DATA.skills.filter((s) => s.category === this.activeSkillCategory);
+    const query = this.skillSearchQuery;
+    const filteredCategories = PROFILE_DATA.skills
+      .filter((s) => this.activeSkillCategory === 'ALL' || s.category === this.activeSkillCategory)
+      .map((cat) => {
+        if (!query) return { ...cat, matchingSkills: cat.skills };
+        const matching = cat.skills.filter((sk) => sk.toLowerCase().includes(query));
+        return { ...cat, matchingSkills: matching };
+      })
+      .filter((cat) => cat.matchingSkills.length > 0);
 
-    gridContainer.innerHTML = filtered
-      .map(
-        (cat) => `
-        <div class="skill-category-group">
-          <div class="category-header">
-            <span class="cat-icon">${getCategoryIcon(cat.category)}</span>
-            <h4 class="cat-title">${cat.category}</h4>
-            <span class="cat-count-badge">${cat.skills.length} competencies</span>
-          </div>
-
-          <div class="skills-pill-cloud">
-            ${cat.skills
-              .map(
-                (skill) => `
-              <div class="skill-matrix-pill">
-                <span class="skill-dot"></span>
-                <span class="skill-text">${skill}</span>
-              </div>
-            `
-              )
-              .join('')}
-          </div>
+    if (filteredCategories.length === 0) {
+      gridContainer.innerHTML = `
+        <div class="skill-empty-search">
+          <div class="empty-icon">🔍</div>
+          <div class="empty-title">No competencies found for "${query}"</div>
+          <div class="empty-desc">Try searching for keywords like "Tokens", "CSS", "Motion", "GIS", or "Figma".</div>
+          <button type="button" class="empty-reset-btn" id="btn-empty-reset">Clear Search Query</button>
         </div>
-      `
-      )
+      `;
+      document.getElementById('btn-empty-reset')?.addEventListener('click', () => {
+        const searchInput = document.getElementById('skill-search-input') as HTMLInputElement | null;
+        if (searchInput) searchInput.value = '';
+        this.skillSearchQuery = '';
+        const searchClear = document.getElementById('skill-search-clear');
+        if (searchClear) searchClear.style.display = 'none';
+        this.renderSkillMatrixGrid();
+      });
+      return;
+    }
+
+    gridContainer.innerHTML = filteredCategories
+      .map((cat) => {
+        const accent = CATEGORY_ACCENTS[cat.category] || '#38bdf8';
+        return `
+          <div class="skill-category-group" style="--cat-accent: ${accent};">
+            <div class="category-header">
+              <span class="cat-icon" style="color: ${accent}; border-color: ${accent}40; background: ${accent}15;">
+                ${getCategoryIcon(cat.category)}
+              </span>
+              <div class="cat-title-wrap">
+                <h4 class="cat-title">${cat.category}</h4>
+                <span class="cat-count-badge">${cat.matchingSkills.length} competencies</span>
+              </div>
+            </div>
+
+            <div class="skill-matrix-rows">
+              ${cat.matchingSkills
+                .map((skill) => {
+                  const tier = getSkillTierBadge(skill);
+                  const displayName = query
+                    ? skill.replace(new RegExp(`(${query})`, 'gi'), '<mark class="skill-highlight">$1</mark>')
+                    : skill;
+                  return `
+                    <div class="skill-matrix-row">
+                      <div class="skill-row-info">
+                        <span class="skill-row-bullet" style="color: ${accent};">▹</span>
+                        <span class="skill-row-name">${displayName}</span>
+                      </div>
+                      <span class="skill-tier-badge" style="border-color: ${accent}30; color: ${accent};">${tier}</span>
+                    </div>
+                  `;
+                })
+                .join('')}
+            </div>
+          </div>
+        `;
+      })
       .join('');
   }
 
@@ -242,33 +444,39 @@ export class ProfileController {
 
     const cardsMarkup = PROFILE_DATA.tools
       .map(
-        (group) => `
-        <div class="tool-cluster-card">
-          <div class="cluster-header">
-            <div class="cluster-meta">
-              <span class="cluster-badge">${group.badge}</span>
-              <h4 class="cluster-title">${group.category}</h4>
+        (group) => {
+          const accent = TOOL_GROUP_COLORS[group.category] || '#38bdf8';
+          return `
+          <div class="tool-cluster-card" style="--cluster-accent: ${accent};">
+            <div class="cluster-header">
+              <div class="cluster-meta">
+                <span class="cluster-badge" style="color: ${accent}; border-color: ${accent}40; background: ${accent}12;">${group.badge}</span>
+                <h4 class="cluster-title">${group.category}</h4>
+              </div>
+            </div>
+            <p class="cluster-desc">${group.description}</p>
+
+            <div class="tools-pills-list">
+              ${group.tools
+                .map(
+                  (tool) => {
+                    const toolColor = getToolBrandColor(tool.name);
+                    return `
+                    <div class="tool-pill-item ${tool.highlighted ? 'highlighted' : ''}" style="--tool-accent: ${toolColor};" role="button" tabindex="0" title="Click to add to pipeline synthesizer">
+                      <div class="tool-name-line">
+                        <span class="tool-brand-icon" style="color: ${toolColor};">${getToolIcon(tool.name)}</span>
+                        <span class="tool-name">${tool.name}</span>
+                      </div>
+                      <span class="tool-tag-label">${tool.tag}</span>
+                    </div>
+                  `;
+                  }
+                )
+                .join('')}
             </div>
           </div>
-          <p class="cluster-desc">${group.description}</p>
-
-          <div class="tools-pills-list">
-            ${group.tools
-              .map(
-                (tool) => `
-              <div class="tool-pill-item ${tool.highlighted ? 'highlighted' : ''}" role="button" tabindex="0" title="Click to add to pipeline synthesizer">
-                <div class="tool-name-line">
-                  <span class="tool-brand-icon">${getToolIcon(tool.name)}</span>
-                  <span class="tool-name">${tool.name}</span>
-                </div>
-                <span class="tool-tag-label">${tool.tag}</span>
-              </div>
-            `
-              )
-              .join('')}
-          </div>
-        </div>
-      `
+        `;
+        }
       )
       .join('');
 
@@ -407,38 +615,46 @@ export class ProfileController {
     container.innerHTML = filtered
       .map(
         (art, idx) => `
-        <article class="article-thought-card">
-          <div class="article-top-meta">
-            <span class="article-num">0${idx + 1} // ESSAY</span>
-            <div class="meta-right-tags">
-              <span class="article-date-pill">${art.date}</span>
-              <span class="article-read-time">${art.readTime}</span>
+        <article class="article-thought-card" style="--art-accent: ${art.accentColor || '#38bdf8'};">
+          ${art.image ? `
+            <div class="article-thumb-banner">
+              <img src="${art.image}" alt="${art.title}" class="article-thumb-img" loading="lazy" />
+              <div class="article-thumb-gradient"></div>
+              <span class="article-category-tag-floating">${art.category}</span>
             </div>
-          </div>
-          
-          <span class="article-category-badge">${art.category}</span>
-          <h3 class="article-title">${art.title}</h3>
-          <p class="article-summary">${art.summary}</p>
-          
-          <div class="article-heuristic-callout">
-            <span class="heuristic-icon">✦</span>
-            <p class="heuristic-text">${art.coreInsight}</p>
-          </div>
-          
-          <div class="article-topics-list">
-            ${art.topics.map((t) => `<span class="topic-pill">#${t}</span>`).join('')}
-          </div>
+          ` : ''}
+          <div class="article-card-inner">
+            <div class="article-top-meta">
+              <span class="article-num">0${idx + 1} // ESSAY</span>
+              <div class="meta-right-tags">
+                <span class="article-date-pill">${art.date}</span>
+                <span class="article-read-time">${art.readTime}</span>
+              </div>
+            </div>
+            
+            <h3 class="article-title">${art.title}</h3>
+            <p class="article-summary">${art.summary}</p>
+            
+            <div class="article-heuristic-callout">
+              <span class="heuristic-icon" style="color: var(--art-accent, #38bdf8);">✦</span>
+              <p class="heuristic-text">${art.coreInsight}</p>
+            </div>
+            
+            <div class="article-topics-list">
+              ${art.topics.map((t) => `<span class="topic-pill">#${t}</span>`).join('')}
+            </div>
 
-          <div class="article-card-footer">
-            <button type="button" class="btn-article-preview" data-article-id="${art.id}">
-              <span>Read Key Insights</span>
-              <span class="btn-preview-arrow">▸</span>
-            </button>
-            <a href="${art.linkedinUrl}" target="_blank" rel="noopener noreferrer" class="article-read-link" title="Open full article on LinkedIn">
-              <span class="btn-brand-icon-sm">${BRAND_ICONS.linkedin}</span>
-              <span>LinkedIn</span>
-              <span class="arrow-glyph">↗</span>
-            </a>
+            <div class="article-card-footer">
+              <button type="button" class="btn-article-preview" data-article-id="${art.id}">
+                <span>Read Key Insights</span>
+                <span class="btn-preview-arrow">▸</span>
+              </button>
+              <a href="${art.linkedinUrl}" target="_blank" rel="noopener noreferrer" class="article-read-link" title="Open full article on LinkedIn">
+                <span class="btn-brand-icon-sm">${BRAND_ICONS.linkedin}</span>
+                <span>LinkedIn</span>
+                <span class="arrow-glyph">↗</span>
+              </a>
+            </div>
           </div>
         </article>
       `
@@ -580,20 +796,30 @@ export class ProfileController {
         .join('');
     }
 
+    const PILLAR_COLORS: Record<string, string> = {
+      '01': '#38bdf8',
+      '02': '#c084fc',
+      '03': '#34d399',
+      '04': '#fbbf24'
+    };
+
     if (pillarsContainer) {
       pillarsContainer.innerHTML = PROFILE_DATA.leadership.pillars
         .map(
-          (pillar) => `
-          <div class="leadership-pillar-card">
-            <div class="pillar-topbar">
-              <span class="pillar-num">${pillar.number}</span>
-              ${pillar.metric ? `<span class="pillar-metric-tag">${pillar.metric}</span>` : ''}
+          (pillar) => {
+            const accent = PILLAR_COLORS[pillar.number] || '#38bdf8';
+            return `
+            <div class="leadership-pillar-card" style="--pillar-accent: ${accent};">
+              <div class="pillar-topbar">
+                <span class="pillar-num" style="color: ${accent};">${pillar.number}</span>
+                ${pillar.metric ? `<span class="pillar-metric-tag" style="border-color: ${accent}40; color: ${accent}; background: ${accent}12;">${pillar.metric}</span>` : ''}
+              </div>
+              <h4 class="pillar-title">${pillar.title}</h4>
+              <span class="pillar-tagline" style="color: ${accent};">${pillar.tagline}</span>
+              <p class="pillar-desc">${pillar.description}</p>
             </div>
-            <h4 class="pillar-title">${pillar.title}</h4>
-            <span class="pillar-tagline">${pillar.tagline}</span>
-            <p class="pillar-desc">${pillar.description}</p>
-          </div>
-        `
+          `;
+          }
         )
         .join('');
     }

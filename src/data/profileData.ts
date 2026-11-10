@@ -86,6 +86,8 @@ export interface Article {
   keyTakeaways: string[];
   topics: string[];
   linkedinUrl: string;
+  image?: string;
+  accentColor?: string;
 }
 
 export interface LeadershipPillar {
@@ -110,6 +112,7 @@ export interface ProfileData {
     linkedin: string;
     behance: string;
     email: string;
+    whatsapp: string;
   };
   metrics: {
     value: string;
@@ -155,7 +158,8 @@ export const PROFILE_DATA: ProfileData = {
   socialLinks: {
     linkedin: 'https://www.linkedin.com/in/vinnythewebdesigner/',
     behance: 'https://www.behance.net/AkkySigns',
-    email: 'mandhalavinodh@gmail.com'
+    email: 'mandhalavinodh@gmail.com',
+    whatsapp: 'https://wa.me/919908177179'
   },
 
   metrics: [
@@ -678,6 +682,8 @@ export const PROFILE_DATA: ProfileData = {
       category: 'Graphic Design & Semiotics',
       date: 'Published on LinkedIn',
       readTime: '6 min read',
+      image: './assets/articles/art_visual_metaphorism.jpg',
+      accentColor: '#fb923c',
       summary: 'Exploring how physical real-world metaphors ground complex digital interfaces, bridge mental models, and evoke instinctual user comprehension.',
       coreInsight: 'Digital interfaces achieve immediate cognitive fluency when they honor physical semiotic anchors rather than inventing arbitrary abstractions.',
       excerpt: 'When users interact with dense software, they rely on subconscious cognitive shortcuts. Physical affordance—the tactile weight of elevation tiers, the familiar momentum of spring physics, and the visual taxonomy of real-world materials—acts as an intuitive translation layer between human memory and machine logic.',
@@ -695,6 +701,8 @@ export const PROFILE_DATA: ProfileData = {
       category: 'Design Leadership & Strategy',
       date: 'Published on LinkedIn',
       readTime: '8 min read',
+      image: './assets/articles/art_client_psychology.jpg',
+      accentColor: '#c084fc',
       summary: 'Translating subjective aesthetic debates into objective business metrics. How designers can frame rationale around risk mitigation and measurable ROI.',
       coreInsight: 'Stakeholder resistance is rarely about visual taste; it is about perceived risk and undefined business outcomes.',
       excerpt: 'When presenting design architectures to C-level leadership or enterprise clients, subjective terms like "cleaner" or "more modern" trigger defensive skepticism. By anchoring design decisions in measurable risk reduction—such as task velocity, operator error reduction, and developer handoff velocity—designers transform critique into collaborative strategy.',
@@ -712,6 +720,8 @@ export const PROFILE_DATA: ProfileData = {
       category: 'UX Research & Metrics',
       date: 'Published on LinkedIn',
       readTime: '7 min read',
+      image: './assets/articles/art_ux_benchmarking.jpg',
+      accentColor: '#38bdf8',
       summary: 'A quantitative blueprint for measuring usability enhancements over time using standardized task completion rates, SUS scores, and cognitive load metrics.',
       coreInsight: 'Without baseline empirical benchmarks, UX redesigns risk being treated as subjective cosmetic facelifts.',
       excerpt: 'Enterprise systems with hundreds of parameters cannot rely on gut feeling. Establishing quantitative benchmarks—such as time-on-task, error recovery rates, System Usability Scale (SUS) scores, and Single Ease Questions (SEQ)—provides continuous empirical evidence that justifies system iterations.',
@@ -729,6 +739,8 @@ export const PROFILE_DATA: ProfileData = {
       category: 'Design Systems & Theory',
       date: 'Published on LinkedIn',
       readTime: '10 min read',
+      image: './assets/articles/art_technical_poster.jpg',
+      accentColor: '#34d399',
       summary: 'The timeless laws that govern both poster design and enterprise software: mathematical baseline grids, color contrast ratios, and gestalt grouping principles.',
       coreInsight: 'Digital interfaces age rapidly; mathematical compositional balance, typographic harmony, and Gestalt grouping are timeless.',
       excerpt: 'Whether composing an editorial Swiss poster or architecting a multi-tenant SaaS dashboard, the foundational rules of perception remain identical: mathematical typographic scales (such as the Golden Ratio 1.618), strict 8pt baseline rhythm, deliberate negative space, and Gestalt proximity.',
@@ -746,6 +758,8 @@ export const PROFILE_DATA: ProfileData = {
       category: 'Information Architecture',
       date: 'Published on LinkedIn',
       readTime: '5 min read',
+      image: './assets/articles/art_imposter_syndrome.jpg',
+      accentColor: '#f43f5e',
       summary: 'How to structure immense volumes of technical data into glanceable, hierarchically layered compositions without overwhelming the human eye.',
       coreInsight: 'High density does not equal clutter if visual hierarchy, contrast ratios, and optical pathways are strictly disciplined.',
       excerpt: 'Visualizing dense scientific datasets and mission-critical telemetry requires multi-tiered optical layering. By dividing the composition into primary focal anchors, secondary relational telemetry, and tertiary micro-labels, users can parse macro trends at a glance and drill down into sub-components seamlessly.',
@@ -763,6 +777,8 @@ export const PROFILE_DATA: ProfileData = {
       category: 'Creative Tech & AI',
       date: 'Published on LinkedIn',
       readTime: '9 min read',
+      image: './assets/articles/art_no_code_ai_tools.jpg',
+      accentColor: '#fbbf24',
       summary: 'Moving past simple prompts to build integrated creative pipelines where generative models serve as collaborative co-pilots across the design lifecycle.',
       coreInsight: 'Generative AI is not a surrogate for human intent; it is a rapid hypothesis multiplier for disciplined designers.',
       excerpt: 'Prompting an image or text model is only the surface of modern creative technology. The true competitive advantage lies in building local GPU-accelerated pipelines, training custom LoRAs for proprietary design token styles, utilizing computer vision for automated accessibility audits, and integrating design-to-code pipelines.',
@@ -876,6 +892,7 @@ export const PROFILE_DATA: ProfileData = {
       client: 'iSpatial Techno Solutions',
       role: 'Lead UX/UI Architect & Spatial Designer',
       timeline: '2024 – Present',
+      image: './assets/projects/smart-feild-geo.jpg',
       summary: 'A high-performance 3D GIS platform delivering sub-second spatial querying, terrain slicing, and fluid multi-layer rendering across dense geographic datasets.',
       problem: 'Enterprise GIS analysts were bogged down by sluggish 2D web interfaces that struggled to visualize elevation gradients, subterranean utilities, and multi-temporal satellite datasets without browser lag.',
       uxThinking: 'Engineered contextual spatial breadcrumbs, layer blend modes, intuitive terrain pitch/yaw controls, and a bespoke spatial HUD with non-destructive attribute filtering.',
@@ -1138,6 +1155,7 @@ export const PROFILE_DATA: ProfileData = {
       client: 'iSpatial Techno Solutions',
       role: 'Staff UX Architect',
       timeline: '2023 – 2024',
+      image: './assets/projects/fajme-portal.jpg',
       summary: 'Mission-critical fleet telematics system tracking thousands of active transport assets with live route optimization, driver safety alerts, and predictive maintenance.',
       problem: 'Fleet dispatchers were overwhelmed by cluttered 2D maps and asynchronous alert modals, leading to missed delay notifications and increased driver fatigue.',
       uxThinking: 'Developed high-contrast dark mode HUD optimized for multi-monitor command centers, dynamic vehicle cluster heatmaps, and glanceable trip health cards.',
@@ -1160,6 +1178,7 @@ export const PROFILE_DATA: ProfileData = {
       client: 'iSpatial Techno Solutions',
       role: 'Design System Lead',
       timeline: '2022 – 2024',
+      image: './assets/projects/macher-portal.jpg',
       summary: 'A comprehensive multi-tenant design system unifying 14 geospatial products under consistent ergonomic guidelines, token pipelines, and accessible components.',
       problem: 'Multiple siloed teams built inconsistent UI components, resulting in conflicting UX patterns, broken accessibility, and 3x longer design-to-code delivery cycles.',
       uxThinking: 'Created atomic tokens (spacing, typography, map marker glyphs, elevation tiers) synced seamlessly between Figma and React/Vanilla TS repositories.',
@@ -1182,6 +1201,7 @@ export const PROFILE_DATA: ProfileData = {
       client: 'iSpatial Techno Solutions',
       role: 'Principal Product Designer',
       timeline: '2023 – 2024',
+      image: './assets/projects/banners-and-ads.jpg',
       summary: 'Computer-vision powered platform that automatically detects urban infrastructure shifts, structural anomalies, and environmental changes from satellite and drone telemetry.',
       problem: 'Manual inspection of satellite imagery for civil infrastructure risks was error-prone, labor-intensive, and weeks behind real-world physical changes.',
       uxThinking: 'Created a dual-viewport temporal scrubber allowing instant before/after AI inference comparisons with confidence threshold dials and bounding-box audit logs.',

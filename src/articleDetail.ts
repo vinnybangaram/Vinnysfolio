@@ -1,5 +1,6 @@
 // Controller for Article Detail Page (article.html)
 import { ARTICLES_DATA, DetailedArticle, ArticleSection } from './data/articlesData';
+import { WhatsAppController } from './components/WhatsAppController';
 
 class ArticleDetailController {
   private article: DetailedArticle | null = null;
@@ -23,6 +24,7 @@ class ArticleDetailController {
     this.loadArticle();
     this.setupReadingProgress();
     this.setupShareButton();
+    new WhatsAppController();
   }
 
   private loadArticle(): void {

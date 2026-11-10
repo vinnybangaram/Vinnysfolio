@@ -22,17 +22,28 @@ export default defineConfig({
   },
   plugins: [
     {
-      name: 'copy-me-frames-to-dist',
+      name: 'copy-static-assets-to-dist',
       closeBundle() {
-        const srcDir = path.resolve(__dirname, 'Me');
-        const destDir = path.resolve(__dirname, 'dist', 'frames');
-        if (fs.existsSync(srcDir)) {
+        const framesSrc = path.resolve(__dirname, 'Me');
+        const framesDest = path.resolve(__dirname, 'dist', 'frames');
+        if (fs.existsSync(framesSrc)) {
           console.log('[build] Copying frames from Me to dist/frames for deployment...');
-          if (!fs.existsSync(destDir)) {
-            fs.mkdirSync(destDir, { recursive: true });
+          if (!fs.existsSync(framesDest)) {
+            fs.mkdirSync(framesDest, { recursive: true });
           }
-          fs.cpSync(srcDir, destDir, { recursive: true });
+          fs.cpSync(framesSrc, framesDest, { recursive: true });
           console.log('[build] Successfully populated dist/frames.');
+        }
+
+        const assetsSrc = path.resolve(__dirname, 'assets');
+        const assetsDest = path.resolve(__dirname, 'dist', 'assets');
+        if (fs.existsSync(assetsSrc)) {
+          console.log('[build] Copying assets directory to dist/assets for deployment...');
+          if (!fs.existsSync(assetsDest)) {
+            fs.mkdirSync(assetsDest, { recursive: true });
+          }
+          fs.cpSync(assetsSrc, assetsDest, { recursive: true });
+          console.log('[build] Successfully populated dist/assets.');
         }
       }
     },

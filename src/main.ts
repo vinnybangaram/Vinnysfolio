@@ -10,6 +10,7 @@ import { InteractivePlayground } from './components/InteractivePlayground';
 import { OrbitalSkillGalaxy } from './components/OrbitalSkillGalaxy';
 import { AIAssistant } from './components/AIAssistant';
 import { ScrubController } from './components/ScrubController';
+import { WhatsAppController } from './components/WhatsAppController';
 
 class App {
   private frameLoader!: FrameLoader;
@@ -90,6 +91,7 @@ class App {
     new ProfileController();
     new InteractivePlayground();
     new OrbitalSkillGalaxy('orbital-galaxy-canvas');
+    new WhatsAppController();
 
     // 8. Initialize AI Assistant with deep link callback
     this.aiAssistant = new AIAssistant((projectId: string) => {

@@ -139,6 +139,22 @@ export class AIAssistant {
           });
         }
       }
+
+      const waBtn = this.messagesContainer?.querySelector('.open-whatsapp-btn');
+      if (waBtn) {
+        waBtn.addEventListener('click', () => {
+          this.close();
+          const prompt = waBtn.getAttribute('data-whatsapp-prompt') || undefined;
+          const waFab = document.getElementById('whatsapp-fab');
+          if (waFab) {
+            waFab.click();
+            const msgInput = document.getElementById('wa-message-text') as HTMLTextAreaElement;
+            if (msgInput && prompt) {
+              msgInput.value = prompt;
+            }
+          }
+        });
+      }
     }, 320);
   }
 
@@ -387,9 +403,14 @@ export class AIAssistant {
       };
     }
 
-    // 10. SOCIAL / BEHANCE / CONTACT
+    // 10. SOCIAL / BEHANCE / CONTACT / WHATSAPP
     if (
       q.includes('contact') ||
+      q.includes('whatsapp') ||
+      q.includes('message') ||
+      q.includes('phone') ||
+      q.includes('chat') ||
+      q.includes('call') ||
       q.includes('email') ||
       q.includes('behance') ||
       q.includes('linkedin') ||
@@ -398,13 +419,17 @@ export class AIAssistant {
     ) {
       return {
         html: `
-          <p>You can connect with Vinodh across verified channels:</p>
+          <p>You can connect directly with Vinodh across his verified channels:</p>
           <ul style="margin: 6px 0 6px 18px; line-height: 1.6;">
-            <li><strong>Behance Portfolio:</strong> <a href="${PROFILE_DATA.socialLinks.behance}" target="_blank" rel="noopener noreferrer" style="color:#38bdf8;">behance.net/AkkySigns</a></li>
+            <li><strong>WhatsApp Direct:</strong> Instant direct messaging for design roles, project collaborations & consulting.</li>
             <li><strong>LinkedIn Profile:</strong> <a href="${PROFILE_DATA.socialLinks.linkedin}" target="_blank" rel="noopener noreferrer" style="color:#38bdf8;">LinkedIn (22K+ community)</a></li>
+            <li><strong>Behance Portfolio:</strong> <a href="${PROFILE_DATA.socialLinks.behance}" target="_blank" rel="noopener noreferrer" style="color:#38bdf8;">behance.net/AkkySigns</a></li>
             <li><strong>Direct Inquiry:</strong> <a href="mailto:${PROFILE_DATA.socialLinks.email}" style="color:#38bdf8;">${PROFILE_DATA.socialLinks.email}</a></li>
           </ul>
-          <button class="suggestion-chip" data-section-target="contact" style="margin-top:10px; border-color: #38bdf8; color: #38bdf8;">✦ Jump to Contact Section</button>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px;">
+            <button class="suggestion-chip open-whatsapp-btn" data-whatsapp-prompt="Hi Vinodh, I was speaking with your AI companion and would like to connect on WhatsApp!" style="background: rgba(37, 211, 102, 0.15); border-color: #25D366; color: #25D366; font-weight: 600;">💬 Chat on WhatsApp</button>
+            <button class="suggestion-chip" data-section-target="contact" style="border-color: #38bdf8; color: #38bdf8;">✦ Jump to Contact Section</button>
+          </div>
         `,
         sectionId: 'contact'
       };

@@ -1,5 +1,6 @@
 // Controller for Articles Hub Page (articles.html)
 import { ARTICLES_DATA, DetailedArticle } from './data/articlesData';
+import { WhatsAppController } from './components/WhatsAppController';
 
 class ArticlesHubController {
   private searchQuery: string = '';
@@ -30,6 +31,7 @@ class ArticlesHubController {
 
     this.bindEvents();
     this.render();
+    new WhatsAppController();
   }
 
   private bindEvents(): void {

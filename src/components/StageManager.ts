@@ -44,23 +44,23 @@ export class StageManager {
     if (s2Visual) {
       s2Visual.innerHTML = `
         <div class="ui-components-preview">
-          <div class="ui-card-mock">
+          <div class="ui-card-mock" style="border-top: 2px solid #34d399;">
             <div class="ui-card-header">
-              <span class="ui-token-code">display: flex; gap: 12px;</span>
-              <span class="ui-token-code">HTML5 / CSS3</span>
+              <span class="ui-token-code" style="color: #34d399; background: rgba(52, 211, 153, 0.1); border: 1px solid rgba(52, 211, 153, 0.25);">display: flex; gap: 12px;</span>
+              <span class="ui-token-code" style="color: #34d399; background: rgba(52, 211, 153, 0.1); border: 1px solid rgba(52, 211, 153, 0.25);">HTML5 / CSS3</span>
             </div>
-            <div style="font-weight:600; font-size: 0.9rem; margin-bottom: 6px;">Semantic DOM & Component Architecture</div>
+            <div style="font-weight:600; font-size: 0.9rem; margin-bottom: 6px; color: #f8fafc;">Semantic DOM & Component Architecture</div>
             <div style="font-size: 0.8rem; color: #94a3b8;">Zero-dependency, accessible responsive layouts translating Figma to production code.</div>
-            <button class="ui-btn-sample" style="background: linear-gradient(135deg, #10b981, #059669);">&lt;Component /&gt;</button>
+            <button class="ui-btn-sample" style="background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);">&lt;Component /&gt;</button>
           </div>
-          <div class="ui-card-mock">
+          <div class="ui-card-mock" style="border-top: 2px solid #38bdf8;">
             <div class="ui-card-header">
-              <span class="ui-token-code">tokens.radius.lg // 16px</span>
-              <span class="ui-token-code">60 FPS</span>
+              <span class="ui-token-code" style="color: #38bdf8; background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.25);">tokens.radius.lg // 16px</span>
+              <span class="ui-token-code" style="color: #38bdf8; background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.25);">60 FPS</span>
             </div>
-            <div style="font-weight:600; font-size: 0.9rem; margin-bottom: 6px;">Living Token Pipeline</div>
+            <div style="font-weight:600; font-size: 0.9rem; margin-bottom: 6px; color: #f8fafc;">Living Token Pipeline</div>
             <div style="font-size: 0.8rem; color: #94a3b8;">Multi-tenant CSS custom properties syncing design with engineering.</div>
-            <button class="ui-btn-sample">Inspect Tokens</button>
+            <button class="ui-btn-sample" style="background: linear-gradient(135deg, #0ea5e9, #2563eb); box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35);">Inspect Tokens</button>
           </div>
         </div>
       `;

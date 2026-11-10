@@ -16,6 +16,10 @@
     <meta property="og:description" content="A designer walking through an evolving digital design environment." />
     <meta property="og:type" content="website" />
     
+    <!-- Favicon & Brand Icons -->
+    <link rel="icon" type="image/png" href="./assets/brand/favicon.png" />
+    <link rel="apple-touch-icon" href="./assets/brand/favicon.png" />
+
     <link rel="stylesheet" href="./src/styles/tokens.css" />
     <link rel="stylesheet" href="./src/styles/main.css" />
   </head>
@@ -24,8 +28,8 @@
     <div id="experience-loader" class="experience-loader">
       <div class="loader-content">
         <div class="loader-brand">
-          <span class="brand-monogram">VK</span>
-          <span class="brand-sub">DESIGN INTELLIGENCE</span>
+          <img src="./assets/brand/logo-full.png" alt="Vinodh Kumar Logo" class="loader-logo-img" />
+          <span class="brand-sub">DESIGN INTELLIGENCE // 18+ YEARS</span>
         </div>
         <div class="loader-status-bar">
           <div class="status-meta">
@@ -52,11 +56,7 @@
       <header class="site-header" id="site-header">
         <div class="header-left">
           <a href="#hero" class="logo-link" aria-label="Vinodh Kumar Home">
-            <span class="logo-mark">VK</span>
-            <div class="logo-info">
-              <span class="logo-name">Vinodh Kumar</span>
-              <span class="logo-title">Design × Motion × AI</span>
-            </div>
+            <img src="./assets/brand/logo-full.png" alt="Vinodh Kumar Logo" class="site-logo-img" />
           </a>
         </div>
 
@@ -178,15 +178,15 @@
                   <div class="hero-eyebrow">PRINCIPAL DESIGNER & CREATIVE TECHNOLOGIST</div>
                   <h2 class="hero-name">VINODH KUMAR</h2>
                   <div class="hero-disciplines">
-                    <span>UX / UI</span>
+                    <span class="disc-pill disc-ux">UX / UI</span>
                     <span class="dot">·</span>
-                    <span>FRONT-END</span>
+                    <span class="disc-pill disc-fe">FRONT-END</span>
                     <span class="dot">·</span>
-                    <span>GRAPHICS</span>
+                    <span class="disc-pill disc-gd">GRAPHICS</span>
                     <span class="dot">·</span>
-                    <span>MOTION</span>
+                    <span class="disc-pill disc-md">MOTION</span>
                     <span class="dot">·</span>
-                    <span>AI</span>
+                    <span class="disc-pill disc-ai">AI</span>
                   </div>
                   <p class="hero-manifesto">
                     "I walk through the world. The world responds to how I design.<br />
@@ -273,25 +273,25 @@
                 </div>
 
                 <div class="metrics-quad-grid">
-                  <div class="metric-quad-item">
+                  <div class="metric-quad-item metric-item-amber">
                     <div class="metric-large-num">18+</div>
                     <div class="metric-title-label">Years in Design</div>
                     <div class="metric-sub-note">Foundation to Enterprise AI</div>
                   </div>
 
-                  <div class="metric-quad-item">
+                  <div class="metric-quad-item metric-item-purple">
                     <div class="metric-large-num">8</div>
                     <div class="metric-title-label">Design Team Members</div>
                     <div class="metric-sub-note">Led & Mentored at IST</div>
                   </div>
 
-                  <div class="metric-quad-item">
+                  <div class="metric-quad-item metric-item-emerald">
                     <div class="metric-large-num">UX × UI</div>
                     <div class="metric-title-label">Motion · Systems · AI</div>
                     <div class="metric-sub-note">Core Convergent Disciplines</div>
                   </div>
 
-                  <div class="metric-quad-item">
+                  <div class="metric-quad-item metric-item-cyan">
                     <div class="metric-large-num">22K+</div>
                     <div class="metric-title-label">LinkedIn Community</div>
                     <div class="metric-sub-note">Industry Peers & Followers</div>
@@ -349,12 +349,32 @@
             <div class="section-badge">COMPETENCY ARCHITECTURE // VERIFIED</div>
             <h2 class="section-title">Specialized Skill Matrix</h2>
             <p class="section-subtitle">
-              Deep, factual capabilities grouped into six structural domains—from ergonomics and front-end code to spatial GIS and design leadership.
+              Deep, factual capabilities structured across core disciplines—from UX/UI and front-end engineering to motion kinetics, applied AI, and design leadership.
             </p>
           </header>
 
-          <!-- 3D ORBITAL COMPETENCY GALAXY -->
-          <div class="orbital-galaxy-wrapper">
+          <!-- Skill Matrix HUD Controls -->
+          <div class="skill-matrix-toolbar">
+            <div class="skill-search-box">
+              <svg class="search-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input type="text" id="skill-search-input" placeholder="Search 45+ specialized competencies (e.g. Tokens, WebGL, GIS, Motion)..." aria-label="Search competencies" />
+              <button type="button" id="skill-search-clear" class="search-clear-btn" style="display: none;" aria-label="Clear search">✕</button>
+            </div>
+            <div class="skill-view-switcher">
+              <button type="button" class="skill-view-btn active" id="btn-view-matrix" data-view="matrix">
+                <span>▦</span> Structured Matrix
+              </button>
+              <button type="button" class="skill-view-btn" id="btn-view-galaxy" data-view="galaxy">
+                <span>✦</span> 3D Orbital Constellation
+              </button>
+            </div>
+          </div>
+
+          <!-- 3D ORBITAL COMPETENCY GALAXY (Toggleable) -->
+          <div class="orbital-galaxy-wrapper" id="orbital-galaxy-wrapper" style="display: none;">
             <div class="galaxy-hud-header">
               <div class="galaxy-legend-tags">
                 <span class="galaxy-tag"><span class="galaxy-dot"></span> 3D ORBITAL SKILL CONSTELLATION</span>
@@ -364,7 +384,7 @@
                 <span class="node-hud-prefix">INSPECTING:</span>
                 <strong id="galaxy-node-name">UI Architecture & Systems</strong>
                 <span class="node-hud-divider">·</span>
-                <span id="galaxy-node-cat">UI & UX DESIGN</span>
+                <span id="galaxy-node-cat">UX/UI DESIGN</span>
                 <span class="node-hud-badge" id="galaxy-node-metric">STATUS: ACTIVE IN PRODUCTION</span>
               </div>
             </div>
@@ -432,35 +452,35 @@
 
           <!-- Process Flow Stream -->
           <div class="ai-process-stream">
-            <div class="process-node">
+            <div class="process-node step-1">
               <span class="process-step-num">01</span>
               <h4 class="process-step-title">HUMAN INTENT</h4>
               <p class="process-step-desc">Strategic empathy & rigorous constraints</p>
             </div>
             <div class="process-arrow">▹</div>
 
-            <div class="process-node">
+            <div class="process-node step-2">
               <span class="process-step-num">02</span>
               <h4 class="process-step-title">DESIGN THINKING</h4>
               <p class="process-step-desc">Spatial mental models & cognitive ergonomics</p>
             </div>
             <div class="process-arrow">▹</div>
 
-            <div class="process-node">
+            <div class="process-node step-3">
               <span class="process-step-num">03</span>
               <h4 class="process-step-title">AI ACCELERATION</h4>
               <p class="process-step-desc">Rapid exploration via frontier LLMs & models</p>
             </div>
             <div class="process-arrow">▹</div>
 
-            <div class="process-node">
+            <div class="process-node step-4">
               <span class="process-step-num">04</span>
               <h4 class="process-step-title">EXPERIMENTATION</h4>
               <p class="process-step-desc">Local GPU compute, face restoration & shaders</p>
             </div>
             <div class="process-arrow">▹</div>
 
-            <div class="process-node highlight">
+            <div class="process-node step-5 highlight">
               <span class="process-step-num">05</span>
               <h4 class="process-step-title">CREATIVE OUTPUT</h4>
               <p class="process-step-desc">60fps fluidity & WCAG AAA accessible systems</p>
@@ -850,7 +870,9 @@
       <footer class="site-footer" id="contact">
         <div class="portfolio-container footer-flex">
           <div class="footer-left">
-            <span class="footer-logo">VINODH KUMAR</span>
+            <a href="#hero" class="footer-logo-link" aria-label="Vinodh Kumar Home">
+              <img src="./assets/brand/logo-full.png" alt="Vinodh Kumar Logo" class="footer-logo-img" />
+            </a>
             <p>Principal Designer · Team Lead UX/UI & Motion · Creative Technologist</p>
             <span class="footer-copy">© 2026 Vinodh Kumar. All rights reserved.</span>
           </div>
@@ -872,6 +894,13 @@
             <a href="mailto:mandhalavinodh@gmail.com" class="footer-link">
               <svg class="footer-brand-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
               <span>mandhalavinodh@gmail.com</span>
+            </a>
+            <a href="#" id="footer-whatsapp-link" class="footer-link special whatsapp-link" aria-label="Direct WhatsApp Message">
+              <svg class="footer-brand-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.59.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.1-.21-.17-.46-.3"/>
+              </svg>
+              <span>WhatsApp (+91 99081 77179)</span>
+              <span class="arrow-glyph">💬</span>
             </a>
             <a href="#cinematic-track" class="footer-link back-to-top">Back to Top ↑</a>
           </div>
